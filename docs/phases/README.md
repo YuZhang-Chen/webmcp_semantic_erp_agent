@@ -46,11 +46,12 @@ Pilot 與正式 A/B/C 實驗
 
 ## Git 版控限制
 
-- `docs/` 與其下的 `docs/phases/` 僅供本機研究規劃；本機 AI Agent 必須能讀取及使用，但不納入 Git 版控，因此不會出現在 remote repository。
+- `docs/` 與其下的 `docs/phases/` 是研究規劃與正式產出，可納入 Git 版控及發布。
+- `docs/diagrams/` 保留本機可編輯與渲染圖檔，不納入 Git 版控；不得 force add。
 - 根目錄 `AGENTS.md` 同樣只供本機 Agent 使用，必須可讀但不得納入 Git 或發布到 remote repository。
 - `.gitignore` 只限制 Git 追蹤，不限制本機 Agent 存取；Agent 不得因該目錄被忽略而刪除、搬移或略過其中的規劃。
-- 必須先由根目錄 `.gitignore` 忽略 `docs/` 與 `.env`，並驗證規則生效後，才能初始化 Git、加入檔案或建立提交。
-- 不得以 force add 將 `docs/` 納入追蹤；若日後需要調整，必須先取得研究者明確同意。
+- 必須先由根目錄 `.gitignore` 忽略 `docs/diagrams/`、`.env` 與本機 `AGENTS.md`，並驗證規則生效後，才能加入檔案或建立提交。
+- 任何 Git add／commit 都必須先取得研究者明確同意。
 
 ## A/B/C 控制原則
 
