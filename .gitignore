@@ -1,0 +1,11 @@
+# Local SAP prototype credentials and environment overrides.
+.env
+.env.*
+!.env.example
+docs/diagrams
+
+# Local research planning; never publish phase documents or drafts.
+docs/
+
+# Local-only agent instructions.
+AGENTS.md
