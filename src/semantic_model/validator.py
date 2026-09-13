@@ -160,6 +160,22 @@ def _reference_issues(model: dict[str, Any]) -> Iterable[ValidationIssue]:
                 f"/operations/{operation_id}/input_schema",
                 f"expected {sorted(expected_parameters)}, got {sorted(actual_parameters)}",
             )
+        for parameter_id, parameter_schema in input_properties.items():
+            if not isinstance(parameter_schema, dict) or not isinstance(
+                parameter_schema.get("description"), str
+            ) or not parameter_schema["description"].strip():
+                parameter_path = (
+                    f"/operations/{operation_id}/input_schema/properties/{parameter_id}"
+                )
+                if operation_id == "search_sales_orders":
+                    parameter_path = (
+                        f"/operations/{operation_id}/input_schema/properties/criteria/properties/{parameter_id}"
+                    )
+                yield _issue(
+                    "E_PARAMETER_DESCRIPTION",
+                    parameter_path,
+                    "Agent-visible parameters must have a non-empty business description",
+                )
         binding = bindings[binding_ref]
         bound_parameters = set(binding.get("parameters", {}))
         if bound_parameters != expected_parameters:

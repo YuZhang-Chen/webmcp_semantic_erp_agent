@@ -1,6 +1,6 @@
 model:
   id: sap-sd-webmcp
-  version: 0.3.0
+  version: 0.4.0
   status: validated
   protocol: odata-v2
   source_id: webmcp.sap_sd.odata
@@ -239,10 +239,25 @@ operations:
           additionalProperties: false
           minProperties: 1
           properties:
-            customer_id: {type: string, minLength: 1, maxLength: 10, format: sap_customer_id}
-            order_date_from: {type: string, format: date}
-            order_date_to: {type: string, format: date}
-            order_status: {type: string, minLength: 1, enum: [not_started, partially_completed, completed]}
+            customer_id:
+              type: string
+              minLength: 1
+              maxLength: 10
+              format: sap_customer_id
+              description: 只搜尋指定客戶所擁有的銷售訂單。
+            order_date_from:
+              type: string
+              format: date
+              description: 訂單日期區間起點，包含當日。
+            order_date_to:
+              type: string
+              format: date
+              description: 訂單日期區間終點，包含當日。
+            order_status:
+              type: string
+              minLength: 1
+              enum: [not_started, partially_completed, completed]
+              description: 只接受受治理的銷售訂單業務狀態。
     output_schema_ref: sales_order_list
     binding_ref: search_sales_orders_binding
   get_sales_order:
@@ -255,7 +270,12 @@ operations:
       additionalProperties: false
       required: [sales_order_id]
       properties:
-        sales_order_id: {type: string, minLength: 1, maxLength: 10, format: sap_sales_order_id}
+        sales_order_id:
+          type: string
+          minLength: 1
+          maxLength: 10
+          format: sap_sales_order_id
+          description: 要取得的單筆銷售訂單識別碼。
     output_schema_ref: sales_order_detail
     binding_ref: get_sales_order_binding
   get_related_deliveries:
@@ -268,7 +288,12 @@ operations:
       additionalProperties: false
       required: [sales_order_id]
       properties:
-        sales_order_id: {type: string, minLength: 1, maxLength: 10, format: sap_sales_order_id}
+        sales_order_id:
+          type: string
+          minLength: 1
+          maxLength: 10
+          format: sap_sales_order_id
+          description: 作為文件流程起點、用來追蹤外向交貨的銷售訂單識別碼。
     output_schema_ref: delivery_list
     binding_ref: get_related_deliveries_binding
   get_related_billing_documents:
@@ -281,7 +306,12 @@ operations:
       additionalProperties: false
       required: [sales_order_id]
       properties:
-        sales_order_id: {type: string, minLength: 1, maxLength: 10, format: sap_sales_order_id}
+        sales_order_id:
+          type: string
+          minLength: 1
+          maxLength: 10
+          format: sap_sales_order_id
+          description: 作為文件流程起點、用來追蹤請款文件的銷售訂單識別碼。
     output_schema_ref: billing_document_list
     binding_ref: get_related_billing_documents_binding
 
