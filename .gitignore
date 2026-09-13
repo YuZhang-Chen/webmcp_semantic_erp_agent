@@ -6,3 +6,10 @@ docs/diagrams
 
 # Local-only agent instructions.
 AGENTS.md
+
+# Local Python environment and generated validation artifacts.
+.venv/
+.uv-cache/
+.pytest_cache/
+__pycache__/
+build/

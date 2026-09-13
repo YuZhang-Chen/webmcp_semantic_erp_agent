@@ -1,0 +1,389 @@
+model:
+  id: sap-sd-webmcp
+  version: 0.3.0
+  status: validated
+  protocol: odata-v2
+  source_id: webmcp.sap_sd.odata
+  model_source_id: webmcp.sap_sd.semantic_model
+
+evidence_policy:
+  validation_mode: multi_source
+  official_release_evidence_id: sap-s4hana-2023-s4core-108
+  product: SAP S/4HANA
+  release: "2023"
+  software_component: S4CORE
+  component_release: "108"
+  precedence:
+    - official_api_definition
+    - tenant_metadata
+    - known_case_runtime
+    - semantic_binding_validation
+  status_domain_policy: official_complete_tenant_representative
+  code_list_governance:
+    required_for: [status, enumeration, category, discriminator]
+    not_required_for: [id, date, quantity, customer]
+
+scope_boundary:
+  statement: >
+    本研究不建立完整 SAP SD 模組之通用語意模型，而僅針對實驗情境所涉及之
+    Sales Order、Outbound Delivery、Billing Document 與文件流關聯欄位進行語意綁定與狀態碼治理。
+  in_scope: [sales_order, outbound_delivery, billing_document, document_flow]
+  out_of_scope: [complete_sap_sd_ontology, all_sap_tables, all_fixed_values, reverse_engineering]
+
+semantic_field_inventory:
+  sales_order:
+    - {field_id: sales_order_id, business_concept: sales_order_identifier, sap_property: SalesOrder, code_list_required: false}
+    - {field_id: customer_id, business_concept: customer, sap_property: SoldToParty, code_list_required: false}
+    - {field_id: order_date, business_concept: sales_order_date, sap_property: SalesOrderDate, code_list_required: false}
+    - {field_id: order_status, business_concept: sales_order_status, sap_property: OverallSDProcessStatus, code_list_required: true}
+  outbound_delivery:
+    - {field_id: delivery_id, business_concept: delivery_identifier, sap_property: SubsequentDocument, code_list_required: false}
+    - {field_id: delivery_date, business_concept: goods_movement_date, sap_property: ActualGoodsMovementDate, code_list_required: false}
+    - {field_id: delivery_status, business_concept: goods_movement_status, sap_property: OverallGoodsMovementStatus, code_list_required: true}
+  billing_document:
+    - {field_id: billing_document_id, business_concept: billing_document_identifier, sap_property: SubsequentDocument, code_list_required: false}
+    - {field_id: billing_date, business_concept: billing_document_date, sap_property: BillingDocumentDate, code_list_required: false}
+    - {field_id: billing_status, business_concept: billing_accounting_status, sap_property: AccountingPostingStatus, code_list_required: true}
+  document_flow:
+    - {field_id: subsequent_document_category, business_concept: document_type_discriminator, sap_property: SubsequentDocumentCategory, code_list_required: true}
+
+policies:
+  allowed_http_methods: [GET]
+  operation_allowlist:
+    - search_sales_orders
+    - get_sales_order
+    - get_related_deliveries
+    - get_related_billing_documents
+  allow_unverified_bindings: false
+  fallback: forbidden
+
+formats:
+  sap_sales_order_id:
+    type: string
+    min_length: 1
+    max_length: 10
+    evidence_status: tenant_verified
+  sap_customer_id:
+    type: string
+    min_length: 1
+    max_length: 10
+    evidence_status: tenant_verified
+
+business_fields:
+  delivery_date:
+    business_definition: >
+      Outbound Delivery 完成 Post Goods Issue 時，SAP 記錄的實際貨物移動日期。
+      本欄位代表系統中的實際出貨事件，不推定法律上的所有權移轉時間。
+    candidate_property: ActualGoodsMovementDate
+    binding_status: tenant_verified
+  delivery_status:
+    business_definition: >
+      Outbound Delivery 表頭層級的整體貨物移動處理狀態，用以判斷
+      Post Goods Issue 是否尚未開始、部分完成或完成。
+    candidate_property: OverallGoodsMovementStatus
+    binding_status: tenant_verified
+  billing_date:
+    business_definition: >
+      Billing Document 的業務文件日期，用於表示請款文件所屬日期；
+      不使用系統技術建立日期替代，也不推定為應收帳款付款基準日。
+    candidate_property: BillingDocumentDate
+    binding_status: tenant_verified
+  billing_status:
+    business_definition: >
+      Billing Document 向財務會計移轉及產生相關會計文件的處理狀態。
+      本欄位不代表應收帳款已完成收款或清帳。
+    candidate_property: AccountingPostingStatus
+    binding_status: tenant_verified
+
+entities:
+  customer:
+    business_name: 客戶
+    description: 向企業提出銷售需求並擁有相關銷售訂單的業務對象。
+  sales_order:
+    business_name: 銷售訂單
+    description: 記錄客戶訂購內容，並作為後續交貨及請款追蹤起點的商業文件。
+  outbound_delivery:
+    business_name: 外向交貨
+    description: 為履行銷售訂單而建立、可由來源訂單追蹤的物流文件。
+  billing_document:
+    business_name: 請款文件
+    description: 銷售流程中產生、可由來源訂單追蹤的請款文件。
+
+relationships:
+  customer_places_sales_order:
+    source: customer
+    predicate: places
+    target: sales_order
+    description: 由客戶條件搜尋其銷售訂單；不宣稱 OData navigation 已存在。
+    operations: [search_sales_orders]
+  sales_order_generates_outbound_delivery:
+    source: sales_order
+    predicate: generates
+    target: outbound_delivery
+    description: 由已知銷售訂單追蹤外向交貨。
+    operations: [get_related_deliveries]
+  sales_order_generates_billing_document:
+    source: sales_order
+    predicate: generates
+    target: billing_document
+    description: 由已知銷售訂單追蹤請款文件。
+    operations: [get_related_billing_documents]
+
+output_schemas:
+  sales_order_list:
+    type: object
+    additionalProperties: false
+    required: [items, count, trace]
+    properties:
+      items:
+        type: array
+        items: {$ref: "#/$defs/sales_order_summary"}
+      count: {type: integer, minimum: 0}
+      trace: {$ref: "#/$defs/trace"}
+  sales_order_detail:
+    type: object
+    additionalProperties: false
+    required: [sales_order, trace]
+    properties:
+      sales_order:
+        oneOf:
+          - {$ref: "#/$defs/sales_order_summary"}
+          - {type: "null"}
+      trace: {$ref: "#/$defs/trace"}
+  delivery_list:
+    type: object
+    additionalProperties: false
+    required: [items, count, trace]
+    properties:
+      items:
+        type: array
+        items: {$ref: "#/$defs/delivery_summary"}
+      count: {type: integer, minimum: 0}
+      trace: {$ref: "#/$defs/trace"}
+  billing_document_list:
+    type: object
+    additionalProperties: false
+    required: [items, count, trace]
+    properties:
+      items:
+        type: array
+        items: {$ref: "#/$defs/billing_document_summary"}
+      count: {type: integer, minimum: 0}
+      trace: {$ref: "#/$defs/trace"}
+  $defs:
+    trace:
+      type: object
+      additionalProperties: false
+      required: [request_id, operation_id, model_id, model_version, protocol, retrieved_at, source_evidence_id]
+      properties:
+        request_id: {type: string, minLength: 1}
+        operation_id: {enum: [search_sales_orders, get_sales_order, get_related_deliveries, get_related_billing_documents]}
+        model_id: {const: sap-sd-webmcp}
+        model_version: {type: string, minLength: 1}
+        protocol: {const: odata-v2}
+        retrieved_at: {type: string, format: date-time}
+        source_evidence_id: {type: string, minLength: 1}
+    sales_order_summary:
+      type: object
+      additionalProperties: false
+      required: [sales_order_id, customer_id, order_date, order_status]
+      properties:
+        sales_order_id: {type: string, minLength: 1}
+        customer_id: {type: [string, "null"]}
+        order_date: {type: [string, "null"], format: date}
+        order_status: {type: [string, "null"], enum: [not_started, partially_completed, completed, null]}
+    delivery_summary:
+      type: object
+      additionalProperties: false
+      required: [delivery_id, sales_order_id, delivery_date, delivery_status]
+      properties:
+        delivery_id: {type: string, minLength: 1}
+        sales_order_id: {type: string, minLength: 1}
+        delivery_date:
+          type: [string, "null"]
+          format: date
+          description: Outbound Delivery 完成 PGI 時記錄的實際貨物移動日期；不推定法律上的所有權移轉時間。
+        delivery_status:
+          type: [string, "null"]
+          enum: [not_started, partially_completed, completed, null]
+          description: Outbound Delivery 表頭層級的整體貨物移動／PGI 處理狀態。
+    billing_document_summary:
+      type: object
+      additionalProperties: false
+      required: [billing_document_id, sales_order_id, billing_date, billing_status]
+      properties:
+        billing_document_id: {type: string, minLength: 1}
+        sales_order_id: {type: string, minLength: 1}
+        billing_date:
+          type: [string, "null"]
+          format: date
+          description: Billing Document 的業務文件日期；不是系統建立日期或付款基準日。
+        billing_status:
+          type: [string, "null"]
+          enum: [not_relevant, not_processed, partially_processed, completely_processed, null]
+          description: Billing Document accounting-posting processing status；不是應收帳款清帳狀態。
+
+operations:
+  search_sales_orders:
+    purpose: 依允許的客戶、訂單日期或受治理狀態條件搜尋銷售訂單。
+    method: GET
+    entity_refs: [customer, sales_order]
+    relationship_refs: [customer_places_sales_order]
+    input_schema:
+      type: object
+      additionalProperties: false
+      required: [criteria]
+      properties:
+        criteria:
+          type: object
+          additionalProperties: false
+          minProperties: 1
+          properties:
+            customer_id: {type: string, minLength: 1, maxLength: 10, format: sap_customer_id}
+            order_date_from: {type: string, format: date}
+            order_date_to: {type: string, format: date}
+            order_status: {type: string, minLength: 1, enum: [not_started, partially_completed, completed]}
+    output_schema_ref: sales_order_list
+    binding_ref: search_sales_orders_binding
+  get_sales_order:
+    purpose: 以唯一識別碼取得單筆銷售訂單。
+    method: GET
+    entity_refs: [sales_order]
+    relationship_refs: []
+    input_schema:
+      type: object
+      additionalProperties: false
+      required: [sales_order_id]
+      properties:
+        sales_order_id: {type: string, minLength: 1, maxLength: 10, format: sap_sales_order_id}
+    output_schema_ref: sales_order_detail
+    binding_ref: get_sales_order_binding
+  get_related_deliveries:
+    purpose: 從已知銷售訂單追蹤所有相關外向交貨。
+    method: GET
+    entity_refs: [sales_order, outbound_delivery]
+    relationship_refs: [sales_order_generates_outbound_delivery]
+    input_schema:
+      type: object
+      additionalProperties: false
+      required: [sales_order_id]
+      properties:
+        sales_order_id: {type: string, minLength: 1, maxLength: 10, format: sap_sales_order_id}
+    output_schema_ref: delivery_list
+    binding_ref: get_related_deliveries_binding
+  get_related_billing_documents:
+    purpose: 從已知銷售訂單追蹤所有相關請款文件。
+    method: GET
+    entity_refs: [sales_order, billing_document]
+    relationship_refs: [sales_order_generates_billing_document]
+    input_schema:
+      type: object
+      additionalProperties: false
+      required: [sales_order_id]
+      properties:
+        sales_order_id: {type: string, minLength: 1, maxLength: 10, format: sap_sales_order_id}
+    output_schema_ref: billing_document_list
+    binding_ref: get_related_billing_documents_binding
+
+bindings:
+  search_sales_orders_binding:
+    service_id: sales_order_service
+    method: GET
+    entity_set: A_SalesOrder
+    query_strategy: collection_filter
+    status: tenant_verified
+    source_evidence_id: sap-odata-v2-034681b441ad523b
+    metadata_sha256: 034681b441ad523bb5795938c492a6ba8f675fbd9ac628b19837c8e3cd13a925
+    discriminator: null
+    parameters:
+      customer_id: {property: SoldToParty, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      order_date_from: {property: SalesOrderDate, status: tenant_verified, edm_type: Edm.DateTime, max_length: null}
+      order_date_to: {property: SalesOrderDate, status: tenant_verified, edm_type: Edm.DateTime, max_length: null}
+      order_status: {property: OverallSDProcessStatus, status: tenant_verified, edm_type: Edm.String, max_length: 1, code_map: {A: not_started, B: partially_completed, C: completed}, code_map_status: official_documented, tenant_observed_codes: [C]}
+    output_fields:
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      customer_id: {property: SoldToParty, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      order_date: {property: SalesOrderDate, status: tenant_verified, edm_type: Edm.DateTime, max_length: null}
+      order_status: {property: OverallSDProcessStatus, status: tenant_verified, edm_type: Edm.String, max_length: 1, code_map: {A: not_started, B: partially_completed, C: completed}, code_map_status: official_documented, tenant_observed_codes: [C]}
+  get_sales_order_binding:
+    service_id: sales_order_service
+    method: GET
+    entity_set: A_SalesOrder
+    query_strategy: unique_filter
+    status: tenant_verified
+    source_evidence_id: sap-odata-v2-034681b441ad523b
+    metadata_sha256: 034681b441ad523bb5795938c492a6ba8f675fbd9ac628b19837c8e3cd13a925
+    discriminator: null
+    parameters:
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+    output_fields:
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      customer_id: {property: SoldToParty, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      order_date: {property: SalesOrderDate, status: tenant_verified, edm_type: Edm.DateTime, max_length: null}
+      order_status: {property: OverallSDProcessStatus, status: tenant_verified, edm_type: Edm.String, max_length: 1, code_map: {A: not_started, B: partially_completed, C: completed}, code_map_status: official_documented, tenant_observed_codes: [C]}
+  get_related_deliveries_binding:
+    service_id: sales_order_service
+    method: GET
+    entity_set: A_SalesOrderItmSubsqntProcFlow
+    query_strategy: collection_filter
+    status: tenant_verified
+    source_evidence_id: sap-odata-v2-034681b441ad523b
+    metadata_sha256: 034681b441ad523bb5795938c492a6ba8f675fbd9ac628b19837c8e3cd13a925
+    discriminator:
+      property: SubsequentDocumentCategory
+      status: tenant_verified
+      edm_type: Edm.String
+      max_length: 4
+      code_map: {J: outbound_delivery, R: other, M: billing_document}
+      business_value: outbound_delivery
+    enrichment:
+      service_id: outbound_delivery_service
+      method: GET
+      entity_set: A_OutbDeliveryHeader
+      query_strategy: unique_filter
+      status: tenant_verified
+      source_evidence_id: sap-odata-v2-fields-83f4491577c97838
+      metadata_sha256: b752baf5c02347ce718dde785100f22ab72ac39f99e82bb4166a39d496ddacbd
+      key_property: DeliveryDocument
+      input_field: delivery_id
+      evidence_scope: delivery
+    parameters:
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+    output_fields:
+      delivery_id: {property: SubsequentDocument, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      delivery_date: {property: ActualGoodsMovementDate, status: tenant_verified, edm_type: Edm.DateTime, max_length: null, step_ref: enrichment}
+      delivery_status: {property: OverallGoodsMovementStatus, status: tenant_verified, edm_type: Edm.String, max_length: 1, code_map: {A: not_started, B: partially_completed, C: completed}, code_map_status: official_documented, tenant_observed_codes: [A, C], step_ref: enrichment}
+  get_related_billing_documents_binding:
+    service_id: sales_order_service
+    method: GET
+    entity_set: A_SalesOrderItmSubsqntProcFlow
+    query_strategy: collection_filter
+    status: tenant_verified
+    source_evidence_id: sap-odata-v2-034681b441ad523b
+    metadata_sha256: 034681b441ad523bb5795938c492a6ba8f675fbd9ac628b19837c8e3cd13a925
+    discriminator:
+      property: SubsequentDocumentCategory
+      status: tenant_verified
+      edm_type: Edm.String
+      max_length: 4
+      code_map: {J: outbound_delivery, R: other, M: billing_document}
+      business_value: billing_document
+    enrichment:
+      service_id: billing_document_service
+      method: GET
+      entity_set: A_BillingDocument
+      query_strategy: unique_filter
+      status: tenant_verified
+      source_evidence_id: sap-odata-v2-fields-83f4491577c97838
+      metadata_sha256: d44f1d7f1a5de9d393ccd78c417e2e1f56d13d87a68fe5cf29d81cabe0925598
+      key_property: BillingDocument
+      input_field: billing_document_id
+      evidence_scope: billing
+    parameters:
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+    output_fields:
+      billing_document_id: {property: SubsequentDocument, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      sales_order_id: {property: SalesOrder, status: tenant_verified, edm_type: Edm.String, max_length: 10}
+      billing_date: {property: BillingDocumentDate, status: tenant_verified, edm_type: Edm.DateTime, max_length: null, step_ref: enrichment}
+      billing_status: {property: AccountingPostingStatus, status: tenant_verified, edm_type: Edm.String, max_length: 1, code_map: {"": not_relevant, A: not_processed, B: partially_processed, C: completely_processed}, code_map_status: official_documented, tenant_observed_codes: [C], step_ref: enrichment}

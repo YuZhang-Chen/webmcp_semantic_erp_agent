@@ -1,0 +1,267 @@
+{
+  "classification": "sanitized-tenant-evidence",
+  "release_baseline": {
+    "component_release": "108",
+    "product": "SAP S/4HANA",
+    "release": "2023",
+    "software_component": "S4CORE"
+  },
+  "evidence": [
+    {
+      "case_validations": [
+        {
+          "case_kind": "pgi_posted",
+          "category_mappings": [
+            {"business_value": "outbound_delivery", "category_code": "J"},
+            {"business_value": "other", "category_code": "R"}
+          ],
+          "query_status": "passed",
+          "returned_rows": true,
+          "semantic_confirmation": {
+            "confirmed_at": "2026-09-13T12:22:08.756Z",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "method": "known_case_cross_check"
+          }
+        },
+        {
+          "case_kind": "full_sales_flow",
+          "category_mappings": [
+            {"business_value": "outbound_delivery", "category_code": "J"},
+            {"business_value": "other", "category_code": "R"},
+            {"business_value": "billing_document", "category_code": "M"}
+          ],
+          "query_status": "passed",
+          "returned_rows": true,
+          "semantic_confirmation": {
+            "confirmed_at": "2026-09-13T11:30:18.296Z",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "method": "known_case_cross_check"
+          }
+        }
+      ],
+      "limitations": [
+        "V2 metadata structure, Sales Order reads, item-level document flow, and J/R/M category meanings are evidenced.",
+        "One sanitized tenant UI/OData representative case confirms OverallSDProcessStatus C = completed; no business key is stored.",
+        "No business keys, raw rows, endpoint, credentials, or raw metadata are stored."
+      ],
+      "metadata_sha256": "034681b441ad523bb5795938c492a6ba8f675fbd9ac628b19837c8e3cd13a925",
+      "observations": {
+        "document_flow_options": [
+          {
+            "entitySet": "A_SalesOrderItmSubsqntProcFlow",
+            "entityType": "A_SalesOrderItmSubsqntProcFlowType",
+            "level": "item",
+            "properties": [
+              {"edm_type": "Edm.String", "max_length": 10, "name": "SalesOrder"},
+              {"edm_type": "Edm.String", "max_length": 10, "name": "SubsequentDocument"},
+              {"edm_type": "Edm.String", "max_length": 4, "name": "SubsequentDocumentCategory"}
+            ],
+            "source": "entity_set"
+          },
+          {"entitySet": "A_SalesOrderSubsqntProcFlow", "level": "header", "source": "entity_set"}
+        ],
+        "entity_sets": [
+          {"name": "A_SalesOrder"},
+          {"name": "A_SalesOrderBillingPlan"},
+          {"name": "A_SalesOrderBillingPlanItem"},
+          {"name": "A_SalesOrderHeaderPartner"},
+          {"name": "A_SalesOrderHeaderPrElement"},
+          {"name": "A_SalesOrderItem"},
+          {"name": "A_SalesOrderItemBillingPlan"},
+          {"name": "A_SalesOrderItemPartner"},
+          {"name": "A_SalesOrderItemPartnerAddress"},
+          {"name": "A_SalesOrderItemPrElement"},
+          {"name": "A_SalesOrderItemRelatedObject"},
+          {"name": "A_SalesOrderItemText"},
+          {"name": "A_SalesOrderItmPrecdgProcFlow"},
+          {"name": "A_SalesOrderItmSubsqntProcFlow"},
+          {"name": "A_SalesOrderPartnerAddress"},
+          {"name": "A_SalesOrderPrecdgProcFlow"},
+          {"name": "A_SalesOrderRelatedObject"},
+          {"name": "A_SalesOrderScheduleLine"},
+          {"name": "A_SalesOrderSubsqntProcFlow"},
+          {"name": "A_SalesOrderText"},
+          {"name": "A_SlsOrderItemBillingPlanItem"},
+          {"name": "A_SlsOrdPaymentPlanItemDetails"}
+        ],
+        "entity_type": "A_SalesOrderType",
+        "properties": [
+          {"edm_type": "Edm.String", "max_length": 10, "name": "SalesOrder"},
+          {"edm_type": "Edm.String", "max_length": 10, "name": "SoldToParty"},
+          {"edm_type": "Edm.DateTime", "max_length": null, "name": "SalesOrderDate"},
+          {"edm_type": "Edm.String", "max_length": 1, "name": "OverallSDProcessStatus"}
+        ],
+      "sales_order_navigation_options": [
+          {"entitySet": "A_SalesOrder", "navigation": "to_SubsequentProcFlowDoc", "source": "navigation"}
+        ],
+        "selected_entity_set": "A_SalesOrder"
+      },
+      "sales_order_status_validations": [
+        {
+          "case_kind": "representative_completed",
+          "query_status": "passed",
+          "returned_object": true,
+          "single_object": true,
+          "status_code": "C",
+          "status_business_value": "completed",
+          "tenant_ui_validation": {
+            "ui_status": "已完成",
+            "semantic_value": "completed",
+            "matched": true
+          },
+          "verification_status": "tenant_verified",
+          "semantic_confirmation": {
+            "confirmed_at": "2026-09-14T00:00:00Z",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "method": "known_case_cross_check"
+          }
+        }
+      ],
+      "odata_version": "2.0",
+      "protocol": "odata-v2",
+      "service_id": "sales_order_service",
+      "smoke_tests": {
+        "metadata_get": "passed",
+        "sales_order_collection_get": "passed",
+        "sales_order_filter": "passed"
+      },
+      "source_evidence_id": "sap-odata-v2-034681b441ad523b",
+      "source_id": "webmcp.sap_sd.odata",
+      "status": "tenant_verified",
+      "verified_at": "2026-09-13T11:26:05.136Z",
+      "verified_bindings": [
+        "search_sales_orders_binding",
+        "get_sales_order_binding",
+        "get_related_deliveries_binding",
+        "get_related_billing_documents_binding"
+      ]
+    },
+    {
+      "limitations": [
+        "Tenant representative cases confirm Delivery A/C and Billing C; unobserved values come only from the pinned official status domain.",
+        "Document IDs, endpoint, credentials, raw rows and raw metadata are not stored.",
+        "Composite enrichment tokens attest only the allowlisted GET/key/field path described by this sanitized metadata."
+      ],
+      "field_validations": [
+        {
+          "case_kind": "delivery_not_started",
+          "date_present": false,
+          "query_status": "passed",
+          "returned_object": true,
+          "semantic_confirmation": {
+            "confirmed_at": "2026-09-13T14:05:31.072Z",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "method": "known_document_cross_check"
+          },
+          "service": "delivery",
+          "status_business_value": "not_started",
+          "status_code": "A"
+        },
+        {
+          "case_kind": "delivery_completed",
+          "date_present": true,
+          "query_status": "passed",
+          "returned_object": true,
+          "semantic_confirmation": {
+            "confirmed_at": "2026-09-13T14:58:41.881Z",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "method": "known_document_cross_check"
+          },
+          "service": "delivery",
+          "status_business_value": "completed",
+          "status_code": "C"
+        },
+        {
+          "case_kind": "billing_completely_processed",
+          "date_present": true,
+          "query_status": "passed",
+          "returned_object": true,
+          "semantic_confirmation": {
+            "confirmed_at": "2026-09-13T14:05:31.072Z",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "method": "known_document_cross_check"
+          },
+          "service": "billing",
+          "status_business_value": "completely_processed",
+          "status_code": "C"
+        }
+      ],
+      "status_domain_validations": [
+        {
+          "service": "billing",
+          "property": "AccountingPostingStatus",
+          "object_node_type": "BillingDocAcctgPostingStatus",
+          "cds_view": "I_AccountingPostingStatus",
+          "source_table": "DD07L",
+          "domain": "STATV",
+          "completeness": "complete",
+          "query_status": "passed",
+          "values": {
+            "": {"sap_text": "不相關", "business_value": "not_relevant"},
+            "A": {"sap_text": "尚未處理", "business_value": "not_processed"},
+            "B": {"sap_text": "部份處理", "business_value": "partially_processed"},
+            "C": {"sap_text": "完全處理", "business_value": "completely_processed"}
+          },
+          "semantic_confirmation": {
+            "method": "cds_view_and_se11_domain_cross_check",
+            "confirmed_by_role": "researcher_with_sap_ui",
+            "confirmed_at": "2026-09-14T00:00:00Z"
+          }
+        }
+      ],
+      "metadata_sha256": "83f4491577c97838e78b66aae7f174c7b768f232d693596d2d5a3ffdb0887ae7",
+      "observations": {
+        "delivery": {
+          "entity_set": "A_OutbDeliveryHeader",
+          "entity_type": "A_OutbDeliveryHeaderType",
+          "metadata_sha256": "b752baf5c02347ce718dde785100f22ab72ac39f99e82bb4166a39d496ddacbd",
+          "properties": [
+            {"edm_type": "Edm.String", "max_length": 10, "name": "DeliveryDocument"},
+            {"edm_type": "Edm.DateTime", "max_length": null, "name": "ActualGoodsMovementDate"},
+            {"edm_type": "Edm.String", "max_length": 1, "name": "OverallGoodsMovementStatus"}
+          ],
+          "query_status": "passed",
+          "returned_object": true,
+          "actual_goods_movement_date_present": true,
+          "status_code": "C",
+          "status_business_value": "completed",
+          "semantic_confirmation": true
+        },
+        "billing": {
+          "entity_set": "A_BillingDocument",
+          "entity_type": "A_BillingDocumentType",
+          "metadata_sha256": "d44f1d7f1a5de9d393ccd78c417e2e1f56d13d87a68fe5cf29d81cabe0925598",
+          "properties": [
+            {"edm_type": "Edm.String", "max_length": 10, "name": "BillingDocument"},
+            {"edm_type": "Edm.DateTime", "max_length": null, "name": "BillingDocumentDate"},
+            {"edm_type": "Edm.String", "max_length": 1, "name": "AccountingPostingStatus"}
+          ],
+          "query_status": "passed",
+          "returned_object": true,
+          "billing_document_date_present": true,
+          "status_code": "C",
+          "status_business_value": "completely_processed",
+          "semantic_confirmation": true
+        }
+      },
+      "odata_version": "2.0",
+      "protocol": "odata-v2",
+      "service_id": "delivery_billing_services",
+      "smoke_tests": {
+        "delivery_metadata_get": "passed",
+        "delivery_single_get": "passed",
+        "billing_metadata_get": "passed",
+        "billing_single_get": "passed"
+      },
+      "source_evidence_id": "sap-odata-v2-fields-83f4491577c97838",
+      "source_id": "webmcp.sap_sd.odata",
+      "status": "tenant_verified",
+      "verified_at": "2026-09-13T13:51:48.592Z",
+      "verified_bindings": [
+        "get_related_deliveries_binding:enrichment",
+        "get_related_billing_documents_binding:enrichment"
+      ]
+    }
+  ],
+  "evidence_version": "2.0"
+}

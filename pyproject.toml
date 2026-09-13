@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "webmcp-semantic-erp-agent"
+version = "0.1.0"
+description = "Governed SAP SD semantic model validation prototype"
+requires-python = ">=3.11"
+dependencies = [
+  "jsonschema>=4.23,<5",
+  "PyYAML>=6.0,<7",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.3,<9"]
+diagnostic = ["requests>=2.32,<3", "python-dotenv>=1.0,<2"]
+
+[project.scripts]
+semantic-model = "semantic_model.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/semantic_model"]
+
+[tool.pytest.ini_options]
+addopts = "-q -p no:cacheprovider"
+testpaths = ["tests"]
+pythonpath = ["src"]

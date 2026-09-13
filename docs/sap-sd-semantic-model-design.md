@@ -12,13 +12,33 @@
 - Agent-visible contract 不包含 endpoint、credential、EntitySet、property、OData query 或 raw SAP row。
 - A／B／C 三組必須正規化成相同 canonical operation、canonical arguments、private binding 與 output schema。
 
+### Scope boundary
+
+本研究不建立完整 SAP SD 模組之通用語意模型，而僅針對實驗情境所涉及之 Sales Order、
+Outbound Delivery、Billing Document 與文件流關聯欄位進行語意綁定與狀態碼治理。
+因此本模型不涵蓋完整 SAP SD ontology、所有 table、所有 fixed values 或全面 reverse
+engineering。這是可支援特定跨文件任務的 semantic layer，不是 SAP SD 通用知識庫。
+
+研究所需欄位固定收斂為：
+
+| Business concept | SAP property | Code-list governance |
+| --- | --- | --- |
+| Sales order status | `OverallSDProcessStatus` | required |
+| Delivery status | `OverallGoodsMovementStatus` | required |
+| Billing/accounting status | `AccountingPostingStatus` | required |
+| Document-flow discriminator | `SubsequentDocumentCategory` | required |
+| Customer、date、document ID | tenant-verified property | not required |
+
+只有 enumeration、status、category、discriminator 類型欄位需要 code-list；一般 ID、date、
+quantity、customer 欄位只驗證 property、EDM type 與長度。
+
 ## 模型識別與生命週期
 
 | 欄位 | 值 | 規則 |
 | --- | --- | --- |
 | `model_id` | `sap-sd-webmcp` | 穩定且不可因實驗條件改名。 |
-| `model_version` | `0.2.0-draft` | Phase 02 設計版；語意或契約變更必須遞增。 |
-| `status` | `draft` | Phase 03 validation 通過前不得標成 `validated` 或 `active`。 |
+| `model_version` | `0.3.0` | Multi-source evidence policy 版；語意或契約變更必須遞增。 |
+| `status` | `validated` | 已通過 Phase 03 multi-source strict gate。 |
 | `protocol` | `odata-v2` | 不自動 fallback 到 V4。 |
 | `source_id` | `webmcp.sap_sd.odata` | live SAP source；authority 是 tenant `$metadata`。 |
 | `model_source_id` | `webmcp.sap_sd.semantic_model` | 本文件所治理的 semantic model source。 |
@@ -62,10 +82,10 @@
 
 | Parameter ID | 業務名稱與意義 | 型別 | 格式／長度 | 必填 | 驗證狀態 | 支援指標 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `customer_id` | 客戶識別碼；只搜尋該客戶的訂單。 | string | `sap_customer_id`；實際最大長度由 metadata 決定，Phase 03 前須補證據。 | 否 | OData property 未驗證 | Parameter Accuracy |
-| `order_date_from` | 訂單日期區間起點，包含當日。 | string | RFC 3339 `full-date`（`YYYY-MM-DD`）。 | 否 | OData property／literal encoding 未驗證 | Parameter Accuracy |
-| `order_date_to` | 訂單日期區間終點，包含當日。 | string | RFC 3339 `full-date`（`YYYY-MM-DD`）。 | 否 | OData property／literal encoding 未驗證 | Parameter Accuracy |
-| `order_status` | 訂單業務狀態；只允許模型明列並完成 SAP code mapping 的值。 | string | governed enum；目前 allowlist 尚未由 tenant evidence 封閉。 | 否 | OData property／code mapping 未驗證 | Parameter Accuracy |
+| `customer_id` | 客戶識別碼；只搜尋該客戶的訂單。 | string | `sap_customer_id`；MaxLength 10。 | 否 | `SoldToParty` tenant metadata 與 filter smoke 已驗證 | Parameter Accuracy |
+| `order_date_from` | 訂單日期區間起點，包含當日。 | string | RFC 3339 `full-date`（`YYYY-MM-DD`）。 | 否 | `SalesOrderDate` tenant metadata 與 filter smoke 已驗證 | Parameter Accuracy |
+| `order_date_to` | 訂單日期區間終點，包含當日。 | string | RFC 3339 `full-date`（`YYYY-MM-DD`）。 | 否 | `SalesOrderDate` tenant metadata 與 filter smoke 已驗證 | Parameter Accuracy |
+| `order_status` | 訂單業務狀態；只允許模型明列並完成 SAP code mapping 的值。 | string | `not_started`／`partially_completed`／`completed`。 | 否 | 官方 A/B/C domain 與 tenant C → completed representative case 已確認 | Parameter Accuracy |
 
 分頁、`$top`、`$select`、OData literal escaping 與結果上限是 private execution policy，不是 Agent-visible 參數。
 
@@ -81,7 +101,7 @@
 
 | Parameter ID | 業務名稱與意義 | 型別 | 格式／長度 | 必填 | 驗證狀態 | 支援指標 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `sales_order_id` | 要取得的銷售訂單識別碼。 | string | `sap_sales_order_id`；non-empty；實際最大長度由 metadata 決定。 | 是 | `SalesOrder` property 名稱已驗證；型別／長度尚待保存 evidence | Parameter Accuracy、Task Success |
+| `sales_order_id` | 要取得的銷售訂單識別碼。 | string | `sap_sales_order_id`；non-empty；MaxLength 10。 | 是 | `SalesOrder` property、型別、長度與唯一 filter 已驗證 | Parameter Accuracy、Task Success |
 
 ### `get_related_deliveries`
 
@@ -95,7 +115,7 @@
 
 | Parameter ID | 業務名稱與意義 | 型別 | 格式／長度 | 必填 | 驗證狀態 | 支援指標 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `sales_order_id` | 作為文件流程起點的銷售訂單識別碼。 | string | `sap_sales_order_id`；non-empty；實際最大長度由 metadata 決定。 | 是 | Delivery 關聯 property／association 未驗證 | Parameter Accuracy、Task Success |
+| `sales_order_id` | 作為文件流程起點的銷售訂單識別碼。 | string | `sap_sales_order_id`；non-empty；MaxLength 10。 | 是 | item document flow 與 category J known case 已驗證 | Parameter Accuracy、Task Success |
 
 ### `get_related_billing_documents`
 
@@ -109,7 +129,23 @@
 
 | Parameter ID | 業務名稱與意義 | 型別 | 格式／長度 | 必填 | 驗證狀態 | 支援指標 |
 | --- | --- | --- | --- | --- | --- | --- |
-| `sales_order_id` | 作為文件流程起點的銷售訂單識別碼。 | string | `sap_sales_order_id`；non-empty；實際最大長度由 metadata 決定。 | 是 | Billing 關聯 property／association 未驗證 | Parameter Accuracy、Task Success |
+| `sales_order_id` | 作為文件流程起點的銷售訂單識別碼。 | string | `sap_sales_order_id`；non-empty；MaxLength 10。 | 是 | item document flow 與 category M known case 已驗證 | Parameter Accuracy、Task Success |
+
+## Delivery 與 Billing 正式業務欄位定義
+
+下列定義是 public semantic contract；candidate property 只是 private binding 候選，必須在
+對應 SAP S/4HANA 2023 官方 API、tenant metadata、唯讀 GET 與 known-case business
+cross-check 完成後才能標示為 `tenant_verified`。
+
+| Semantic field | 正式定義 | Candidate property | 邊界 |
+| --- | --- | --- | --- |
+| `delivery_date` | Outbound Delivery 完成 Post Goods Issue 時，SAP 記錄的實際貨物移動日期。 | `ActualGoodsMovementDate` | 代表系統中的實際出貨事件，不推定法律上的所有權移轉時間。 |
+| `delivery_status` | Outbound Delivery 表頭層級的整體貨物移動處理狀態，用以判斷 PGI 是否尚未開始、部分完成或完成。 | `OverallGoodsMovementStatus` | SAP code 的業務含義必須由 tenant evidence 或 SAP 權威定義確認。 |
+| `billing_date` | Billing Document 的業務文件日期。 | `BillingDocumentDate` | 不以技術建立日期替代，也不推定為應收帳款付款基準日。 |
+| `billing_status` | Billing Document 向財務會計移轉及產生相關會計文件的處理狀態。 | `AccountingPostingStatus` | 不代表應收帳款已完成收款或清帳。 |
+
+Delivery 與 Billing 使用各自明確的 OData V2 service selector，不以 Sales Order service 的同名
+欄位替代，也不在 service 間 silent fallback。
 
 ## Canonical output schemas
 
@@ -171,31 +207,40 @@
 
 | Operation | Symbolic service | EntitySet／查詢方式 | 關鍵 property／關聯 | Evidence status | 下一個證據動作 |
 | --- | --- | --- | --- | --- | --- |
-| `search_sales_orders` | `sales_order_service` | `A_SalesOrder` collection GET | `SalesOrder` 已驗證；Customer、date、status properties 未驗證 | `partially_verified` | 從同一份 tenant `$metadata` 核對 property type／length，並逐一執行無敏感紀錄的 filter smoke test。 |
-| `get_sales_order` | `sales_order_service` | `A_SalesOrder` collection GET with unique filter；是否能用 canonical key path 尚待核對 | `SalesOrder` | `partially_verified` | 保存 property type／length/key evidence；驗證唯一結果與 not-found 行為。 |
-| `get_related_deliveries` | `delivery_service_unresolved` | 未驗證 | 未驗證 | `unverified` | 確認目前 service 是否提供 association/navigation；若需另一個已啟用 service，先建立明確 runtime selector 再驗證。 |
-| `get_related_billing_documents` | `billing_service_unresolved` | 未驗證 | 未驗證 | `unverified` | 確認目前 service 是否提供 association/navigation；若需另一個已啟用 service，先建立明確 runtime selector 再驗證。 |
+| `search_sales_orders` | `sales_order_service` | `A_SalesOrder` collection GET/filter | `SalesOrder`、`SoldToParty`、`SalesOrderDate`、`OverallSDProcessStatus` | `tenant_verified` binding | 補 1–2 個 Sales Order status representative cases。 |
+| `get_sales_order` | `sales_order_service` | `A_SalesOrder` unique filter | `SalesOrder` | `tenant_verified` | 無。 |
+| `get_related_deliveries` | Sales Order flow + Delivery enrichment | `A_SalesOrderItmSubsqntProcFlow` filter，再查 `A_OutbDeliveryHeader` | category J、document ID、日期、status | `tenant_verified` | B 保持官方定義，不要求 tenant case。 |
+| `get_related_billing_documents` | Sales Order flow + Billing enrichment | `A_SalesOrderItmSubsqntProcFlow` filter，再查 `A_BillingDocument` | category M、document ID、日期、status | `tenant_verified` | 完整 domain 已由 SAP DDIC `STATV` value range 對齊。 |
 
-`A_SalesOrder` 與 `SalesOrder` 是目前唯一可寫成 tenant-verified name 的技術 mapping。其他名稱不得從 SAP 文件、命名慣例、其他 repository 或模型記憶推定。
+目前 tenant evidence 已證明 `A_SalesOrder`、`A_SalesOrderItmSubsqntProcFlow`、
+`SalesOrder`、`SubsequentDocument` 與 `SubsequentDocumentCategory` 的實際查詢路徑，並由兩項
+known-case 確認 `J = outbound_delivery`、`R = other`、`M = billing_document`。Delivery 與
+Billing service 的 document-level metadata／GET cross-check 另已確認四個候選欄位；Delivery
+已有 A/C representative cases、Billing 已有 C case。完整 domain 由固定版本的 SAP 官方
+定義與 tenant SAP DDIC `STATV` value range 對齊；不能用 tenant 未出現某個值推論該值不存在。
 
 ### Output field mapping
 
 | Business field | Candidate SAP property | Evidence status | 發布規則 |
 | --- | --- | --- | --- |
-| `sales_order_id` | `SalesOrder` | `tenant_verified_name` | 補齊 EDM type／length evidence 後才可進入 validated model。 |
-| `customer_id` | 未指定 | `unverified` | 從 tenant metadata 核對後填入。 |
-| `order_date` | 未指定 | `unverified` | 核對 EDM date/time type 與 V2 normalization 後填入。 |
-| `order_status` | 未指定 | `unverified` | property 與 code-to-business enum mapping 均須有證據。 |
-| `delivery_id` | 未指定 | `unverified` | 核對 EntitySet、key、來源訂單關聯後填入。 |
-| `delivery_date` | 未指定 | `unverified` | 核對 property type 與 normalization 後填入。 |
-| `delivery_status` | 未指定 | `unverified` | property 與 code mapping 均須有證據。 |
-| `billing_document_id` | 未指定 | `unverified` | 核對 EntitySet、key、來源訂單關聯後填入。 |
-| `billing_date` | 未指定 | `unverified` | 核對 property type 與 normalization 後填入。 |
-| `billing_status` | 未指定 | `unverified` | property 與 code mapping 均須有證據。 |
+| `sales_order_id` | `SalesOrder` | `tenant_verified` | `Edm.String(10)`。 |
+| `customer_id` | `SoldToParty` | `tenant_verified` | `Edm.String(10)`。 |
+| `order_date` | `SalesOrderDate` | `tenant_verified` | `Edm.DateTime` 正規化為 full-date。 |
+| `order_status` | `OverallSDProcessStatus` | `partially_verified` | 官方 A/B/C 完整；補 tenant representative case 後升級。 |
+| `delivery_id` | `SubsequentDocument` | `tenant_verified` | category J known case；`Edm.String(10)`。 |
+| `delivery_date` | `ActualGoodsMovementDate` | `tenant_verified` | Delivery enrichment metadata 與 known case 已核對。 |
+| `delivery_status` | `OverallGoodsMovementStatus` | `tenant_verified` | 官方 A/B/C；tenant observed A/C。 |
+| `billing_document_id` | `SubsequentDocument` | `tenant_verified` | category M known case；`Edm.String(10)`。 |
+| `billing_date` | `BillingDocumentDate` | `tenant_verified` | Billing enrichment metadata 與 known case 已核對。 |
+| `billing_status` | `AccountingPostingStatus` | `tenant_verified` field | SAP DDIC domain STATV：空白／A／B／C；tenant observed C。Semantic value 使用 `completely_processed`，不直接把 SAP 原文改寫成 `posted`。 |
 
 ## Source evidence 規格
 
-Phase 01 已證實：目標瀏覽器可直接讀取 OData V2 `$metadata`，service 有 22 個 EntitySets，`A_SalesOrder` 包含 `SalesOrder`，EntitySet GET 及以 `SalesOrder` 等值過濾的 GET 均成功。Phase 01 repository 記錄沒有保存完整 metadata hash、EDM type、MaxLength、key、navigation 或 association 摘要，因此本模型不能把這些細節提升為已驗證事實。
+Phase 03 採 multi-source validation，固定版本基準為 SAP S/4HANA 2023 / S4CORE 108：官方 API
+定義提供 service/property 與完整 code domain，tenant `$metadata` 提供實際 type/length/hash，
+known-case runtime evidence 提供 representative semantic values，最後才執行 Semantic Binding
+Validation。Sales Order、document-flow、Delivery enrichment 與 Billing enrichment 的 binding
+evidence 已完成；Sales Order status 與 Billing STATV domain 均已通過 strict reconciliation。
 
 Phase 03 建立 machine-readable evidence 時，每筆 evidence 最少包含：
 

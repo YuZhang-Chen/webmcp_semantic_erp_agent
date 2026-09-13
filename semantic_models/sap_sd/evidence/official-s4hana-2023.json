@@ -1,0 +1,141 @@
+{
+  "baseline": {
+    "component_release": "108",
+    "product": "SAP S/4HANA",
+    "release": "2023",
+    "software_component": "S4CORE"
+  },
+  "classification": "sap-official-release-evidence",
+  "evidence_id": "sap-s4hana-2023-s4core-108",
+  "evidence_version": "1.0",
+  "services": [
+    {
+      "entity_sets": {
+        "A_SalesOrder": [
+          "SalesOrder",
+          "SoldToParty",
+          "SalesOrderDate",
+          "OverallSDProcessStatus"
+        ],
+        "A_SalesOrderItmSubsqntProcFlow": [
+          "SalesOrder",
+          "SubsequentDocument",
+          "SubsequentDocumentCategory"
+        ]
+      },
+      "evidence_status": "official_documented",
+      "operations": [
+        "search_sales_orders",
+        "get_sales_order",
+        "get_related_deliveries",
+        "get_related_billing_documents"
+      ],
+      "references": [
+        {
+          "kind": "official_api_definition",
+          "title": "OData API: Sales Order (A2X)",
+          "url": "https://api.sap.com/api/OP_API_SALES_ORDER_SRV_0001/overview"
+        },
+        {
+          "kind": "release_note",
+          "title": "What's New in SAP S/4HANA 2023: OData API Sales Order (A2X)",
+          "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/f296651f454c4284ade361292c633d69/08955849dab543f38b2a5807bd5aaa82.html"
+        }
+      ],
+      "service_id": "sales_order_service",
+      "status_domains": {
+        "OverallSDProcessStatus": {
+          "code_list_id": "OverallSDProcessStatus",
+          "completeness": "complete",
+          "evidence_status": "official_documented",
+          "values": {
+            "A": "not_started",
+            "B": "partially_completed",
+            "C": "completed"
+          }
+        }
+      }
+    },
+    {
+      "entity_sets": {
+        "A_OutbDeliveryHeader": [
+          "DeliveryDocument",
+          "ActualGoodsMovementDate",
+          "OverallGoodsMovementStatus"
+        ]
+      },
+      "evidence_status": "official_documented",
+      "operations": ["get_related_deliveries"],
+      "references": [
+        {
+          "kind": "official_api_definition",
+          "title": "Query Outbound Deliveries — SAP S/4HANA 2023",
+          "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/2f36056ae9a044bba55bcbad204b7bc5/d989130cf30b4184a978d8ca7c8a84b1.html?version=2023.latest"
+        },
+        {
+          "kind": "official_status_definition",
+          "title": "Overall Goods Movement Status — SAP Help Portal",
+          "url": "https://help.sap.com/docs/sap-responsible-design-and-production/user-guide-sap-rdp/overview-d805fb0d75aa430f8dd30dfb8c803986"
+        }
+      ],
+      "service_id": "outbound_delivery_service",
+      "status_domains": {
+        "OverallGoodsMovementStatus": {
+          "code_list_id": "OverallGoodsMovementStatus",
+          "completeness": "complete",
+          "evidence_status": "official_documented",
+          "values": {
+            "A": "not_started",
+            "B": "partially_completed",
+            "C": "completed"
+          }
+        }
+      }
+    },
+    {
+      "entity_sets": {
+        "A_BillingDocument": [
+          "BillingDocument",
+          "BillingDocumentDate",
+          "AccountingPostingStatus"
+        ]
+      },
+      "evidence_status": "official_documented",
+      "operations": ["get_related_billing_documents"],
+      "references": [
+        {
+          "kind": "official_api_definition",
+          "title": "Read Billing Document — SAP S/4HANA 2023 baseline",
+          "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/19d48293097f4a2589433856b034dfa5/ecfcfe82a73a4b3abf42e355ef39c5e5.html?version=2023.latest"
+        },
+        {
+          "kind": "official_code_list_reference",
+          "title": "BillingDocument header: BillingDocAcctgPostingStatus code-list node",
+          "url": "https://help.sap.com/docs/SAP_S4HANA_CLOUD/03c04db2a7434731b7fe21dca77440da/a95da04826944b899989bea23abc8233.html"
+        }
+      ],
+      "service_id": "billing_document_service",
+      "status_domains": {
+        "AccountingPostingStatus": {
+          "code_list_id": "BillingDocAcctgPostingStatus",
+          "completeness": "complete",
+          "evidence_status": "official_documented",
+          "mapping_basis": "SAP DDIC domain STATV value range observed through I_AccountingPostingStatus in the S4CORE 108 tenant",
+          "sap_text": {
+            "": "不相關",
+            "A": "尚未處理",
+            "B": "部份處理",
+            "C": "完全處理"
+          },
+          "values": {
+            "": "not_relevant",
+            "A": "not_processed",
+            "B": "partially_processed",
+            "C": "completely_processed"
+          }
+        }
+      }
+    }
+  ],
+  "verified_at": "2026-09-14"
+}
