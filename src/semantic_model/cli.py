@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .canonicalizer import model_sha256
 from .compiler import artifact_bytes, compile_catalog
+from .conditions import compile_condition_suite
 from .loader import load_evidence, load_json_schema, load_model
 from .validator import validate_model
 
@@ -32,6 +33,14 @@ def build_parser() -> argparse.ArgumentParser:
     compile_parser.add_argument("--official-evidence", type=Path, required=True)
     compile_parser.add_argument("--schema", type=Path, required=True)
     compile_parser.add_argument("--output", type=Path, required=True)
+    conditions = subparsers.add_parser(
+        "compile-conditions", help="compile deterministic A/B/C Phase 05 catalogs"
+    )
+    conditions.add_argument("--model", type=Path, required=True)
+    conditions.add_argument("--evidence", type=Path, required=True)
+    conditions.add_argument("--official-evidence", type=Path, required=True)
+    conditions.add_argument("--schema", type=Path, required=True)
+    conditions.add_argument("--output-dir", type=Path, required=True)
     return parser
 
 
@@ -46,7 +55,8 @@ def main(argv: list[str] | None = None) -> int:
         evidence,
         schema,
         official_evidence=official_evidence,
-        require_compilable=args.command == "compile" or not args.allow_draft,
+        require_compilable=args.command in {"compile", "compile-conditions"}
+        or not getattr(args, "allow_draft", False),
     )
     allow_draft = getattr(args, "allow_draft", False)
     report = {
@@ -70,6 +80,35 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "validate":
         print(rendered)
         return 0 if result.ok else 1
+
+    if args.command == "compile-conditions":
+        if not result.ok:
+            return 1
+        catalogs, manifest = compile_condition_suite(model)
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        paths = {}
+        for condition, catalog in catalogs.items():
+            path = args.output_dir / {
+                "A": "a-technical-tools.json",
+                "B": "b-typed-tools.json",
+                "C": "c-semantic-tools.json",
+            }[condition]
+            path.write_bytes(artifact_bytes(catalog))
+            paths[condition] = str(path)
+        manifest_path = args.output_dir / "conditions-manifest.json"
+        manifest_path.write_bytes(artifact_bytes(manifest))
+        print(
+            json.dumps(
+                {
+                    "artifacts": paths,
+                    "manifest": str(manifest_path),
+                    "suite_sha256": manifest["suiteSha256"],
+                },
+                ensure_ascii=False,
+                sort_keys=True,
+            )
+        )
+        return 0
 
     if not result.ok:
         return 1
