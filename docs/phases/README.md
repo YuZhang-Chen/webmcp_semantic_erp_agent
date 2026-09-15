@@ -36,9 +36,9 @@ Pilot 與正式 A/B/C 實驗
 - 主要協定：已確認可用的 SAP OData V2。
 - Agent 入口：使用者在 ChatGPT／Codex 對話區下達自然語言任務；網站本身不內嵌 LLM 或 Agent Controller。
 - 網頁角色：網站註冊 WebMCP tools，並與 Agent 共用目前開啟頁面的搜尋條件、選取訂單與文件流程狀態。
-- 執行架構：不設置自建應用後端；瀏覽器端共用操作直接以 HTTPS GET 呼叫 SAP OData，SAP ERP 為系統後端。
+- 執行架構：保留 direct-browser 對照；因目標瀏覽器的 SAP 憑證缺少 SAN，正式原型可明確選擇 localhost Gateway transport。兩者都由瀏覽器端共用操作維持 WebMCP/UI 同步，SAP ERP 為系統後端。
 - 原型驗證：帳號密碼由本機 `.env` 提供；SAP 受信任憑證位於 Windows 憑證存放區。此作法只限隔離的教學原型。
-- 停止條件：若目標瀏覽器的 CORS、TLS、驗證或 OData 連線測試失敗，停止實作並由研究者共同處理，不自行加入代理層或 fallback。
+- 停止條件：direct-browser 的 CORS、TLS、驗證或 OData 連線測試失敗時，保留失敗證據；若研究者明確選擇 local-gateway，Gateway 必須固定、受限、只讀，且不得自動 fallback。
 - OData V4：工程上的 optional extension，不列為研討會主要研究階段。
 - 主要實驗：20 tasks × 3 conditions × 3 repetitions = 180 runs。
 - Pilot：5 tasks × 3 conditions × 3 repetitions = 45 runs。

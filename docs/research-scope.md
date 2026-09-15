@@ -42,7 +42,7 @@ D1、D2、D3 是任務分類，不是 Agent 的固定流程。正式執行時不
 | 依變因 | Parameter Accuracy | 正確 canonical 參數值數 ÷ 可評分參數值數；缺漏、錯誤型別、格式或值均列為錯誤 |
 | 依變因 | Task Success Rate | 完成 Ground Truth 要求的 run 數 ÷ 全部有效 run 數；逐一 run 以成功／失敗計分 |
 | 控制變因 | Canonical operations | 三組皆只有固定四工具，不增減操作 |
-| 控制變因 | 執行與資料綁定 | 相同 browser-side execution layer、SAP OData binding、查詢限制與正規化輸出 |
+| 控制變因 | 執行與資料綁定 | 相同 Shared Application Actions、SAP OData binding、查詢限制與正規化輸出；A/B/C 固定使用同一 transport profile |
 | 控制變因 | 網站與頁面狀態 | 相同畫面、搜尋條件、已選訂單、結果呈現與狀態轉換規則 |
 | 控制變因 | 任務與提示 | 相同 task、system prompt、使用者措辭、上下文及可用工具數 |
 | 控制變因 | Agent 條件 | 相同模型、模型版本、推理設定、temperature、工具呼叫上限與逾時設定 |
@@ -92,6 +92,7 @@ D1、D2、D3 是任務分類，不是 Agent 的固定流程。正式執行時不
 執行期：使用者 → ChatGPT／Codex Agent → WebMCP Tools（只載入一組條件）
                                       → Shared Application Actions
                                       → Browser OData V2 Client
+                                      → direct-browser 或 localhost Gateway
                                       → SAP OData V2 → SAP ERP
 
 網站工作台 ──共用搜尋條件、已選訂單與文件結果── WebMCP Tools
@@ -102,7 +103,7 @@ D1、D2、D3 是任務分類，不是 Agent 的固定流程。正式執行時不
 邊界判定：
 
 - `webmcp_semantic_erp_agent/` 是獨立原型；`semantic_analytics/` 僅是設計參考，不是 runtime dependency、資料來源或實驗 baseline。
-- 系統不設置自建應用後端；瀏覽器端 Application Actions 直接以 HTTPS GET 呼叫 SAP OData V2。
+- 系統保留 direct-browser 對照；因目標瀏覽器憑證相容性限制，正式原型可使用明確選擇的 localhost Gateway。瀏覽器端 Application Actions、OData binding 與正規化輸出維持不變。
 - Semantic Model 只在建置期驗證並編譯工具，不是執行期查詢服務。
 - 網站只註冊工具、提供共用頁面狀態並顯示結果，不內嵌 LLM 或 Agent Controller。
 - Agent 自行選擇工具及順序；系統不硬編碼訂單到交貨再到請款的流程。

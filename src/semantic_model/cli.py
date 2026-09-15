@@ -10,6 +10,7 @@ from .canonicalizer import model_sha256
 from .compiler import artifact_bytes, compile_catalog
 from .conditions import compile_condition_suite
 from .loader import load_evidence, load_json_schema, load_model
+from .runtime import compile_runtime_bindings, runtime_artifact_bytes
 from .validator import validate_model
 
 
@@ -41,6 +42,12 @@ def build_parser() -> argparse.ArgumentParser:
     conditions.add_argument("--official-evidence", type=Path, required=True)
     conditions.add_argument("--schema", type=Path, required=True)
     conditions.add_argument("--output-dir", type=Path, required=True)
+    runtime = subparsers.add_parser("compile-runtime", help="compile private Phase 06 browser runtime bindings")
+    runtime.add_argument("--model", type=Path, required=True)
+    runtime.add_argument("--evidence", type=Path, required=True)
+    runtime.add_argument("--official-evidence", type=Path, required=True)
+    runtime.add_argument("--schema", type=Path, required=True)
+    runtime.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -55,7 +62,7 @@ def main(argv: list[str] | None = None) -> int:
         evidence,
         schema,
         official_evidence=official_evidence,
-        require_compilable=args.command in {"compile", "compile-conditions"}
+        require_compilable=args.command in {"compile", "compile-conditions", "compile-runtime"}
         or not getattr(args, "allow_draft", False),
     )
     allow_draft = getattr(args, "allow_draft", False)
@@ -108,6 +115,19 @@ def main(argv: list[str] | None = None) -> int:
                 sort_keys=True,
             )
         )
+        return 0
+
+    if args.command == "compile-runtime":
+        if not result.ok:
+            return 1
+        try:
+            artifact = compile_runtime_bindings(model)
+        except (KeyError, TypeError, ValueError) as exc:
+            print(json.dumps({"compilation_ready": False, "error": str(exc)}, ensure_ascii=False))
+            return 1
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_bytes(runtime_artifact_bytes(artifact))
+        print(json.dumps({"artifact": str(args.output), "artifact_sha256": artifact["artifactSha256"], "operation_count": len(artifact["operations"])}, ensure_ascii=False, sort_keys=True))
         return 0
 
     if not result.ok:

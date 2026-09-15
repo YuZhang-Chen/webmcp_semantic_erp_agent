@@ -40,6 +40,12 @@ def compilable_pair(draft_model, official_evidence):
     model = deepcopy(draft_model)
     model["model"]["version"] = "0.2.0"
     model["model"]["status"] = "validated"
+    model["runtime_services"] = {
+        "test_service": {
+            "runtime_selector": "SAP_ODATA_BASE_URL",
+            "protocol": "odata-v2",
+        }
+    }
     for field in model["business_fields"].values():
         field["binding_status"] = "tenant_verified"
     metadata_hash = "a" * 64

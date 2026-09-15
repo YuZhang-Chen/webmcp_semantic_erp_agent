@@ -1,7 +1,5 @@
 /** Register a Phase 05 condition catalog against the page's WebMCP model context. */
 
-import { createHash } from "node:crypto";
-
 const CONDITIONS = new Set(["A", "B", "C"]);
 const OPERATIONS = new Set([
   "search_sales_orders",
@@ -18,10 +16,13 @@ function stableStringify(value) {
   return JSON.stringify(value);
 }
 
-function verifyArtifactHash(catalog) {
+async function verifyArtifactHash(catalog) {
   if (typeof catalog?.artifactSha256 !== "string") return false;
   const unsigned = Object.fromEntries(Object.entries(catalog).filter(([key]) => key !== "artifactSha256"));
-  return createHash("sha256").update(stableStringify(unsigned)).digest("hex") === catalog.artifactSha256;
+  const bytes = new TextEncoder().encode(stableStringify(unsigned));
+  const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
+  const actual = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return actual === catalog.artifactSha256;
 }
 
 export function canonicalizeArguments(condition, operationId, args) {
@@ -67,7 +68,7 @@ export async function registerConditionTools(modelContext, catalog, actions) {
     !CONDITIONS.has(catalog.condition) ||
     !Array.isArray(catalog.tools) ||
     catalog.tools.length !== 4 ||
-    !verifyArtifactHash(catalog)
+    !(await verifyArtifactHash(catalog))
   ) {
     throw new TypeError("an assembled A/B/C tool catalog is required");
   }

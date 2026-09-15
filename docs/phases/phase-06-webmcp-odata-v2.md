@@ -1,77 +1,101 @@
-# Phase 6：WebMCP 直接串接 SAP OData V2
+# Phase 06：WebMCP 直接串接 SAP OData V2
 
-## 目的
+## 目標與範圍
 
-將三組工具接到相同的瀏覽器與 SAP 執行邊界，完成已確認可用的 OData V2 實作。
+本階段把 Phase 05 的 A/B/C 條件目錄接到瀏覽器端，完成一個以繁體中文呈現的 SAP SD 跨文件查詢工作台。頁面只保留本實驗需要的功能：銷售訂單查詢、訂單明細、外向交貨與請款文件流程，以及 WebMCP 註冊狀態。
 
-## 執行資料流
+本階段不實作寫入、不引入 OData V4、不加入 mock fallback，也不把自然語言聊天框放進網站；自然語言任務由 ChatGPT／Codex Agent 發出，網站提供結構化工作台與四個瀏覽器工具。
+
+## 實作架構
 
 ```text
-使用者在 ChatGPT／Codex 輸入自然語言任務
-   ↓
 ChatGPT／Codex Agent
-   ↓ 發現目前開啟網站註冊的工具
-Browser-native WebMCP（top-level page）
-   ↓ tool execute() 讀取／更新目前頁面狀態
-Shared Application Actions / OData Client
-   ↓ validated HTTPS GET
-SAP OData V2 → SAP ERP
+        │ WebMCP execute()
+        ▼
+frontend/src/App.tsx
+        │ 共用 handler（UI 與 WebMCP 相同）
+        ▼
+frontend/src/runtime/odata.ts
+        │ allowlist + GET-only + HTTPS + 分頁正規化
+        ▼
+Shared transport profile
+        ├─ direct-browser：瀏覽器直接讀取 SAP OData V2
+        └─ local-gateway：瀏覽器同源 GET → localhost Gateway → SAP OData V2
 ```
 
-## 網站互動設計
+啟動器 `scripts/serve_phase06.py` 提供靜態前端、選定的 A/B/C catalog、runtime binding artifact 與 transport profile。`direct-browser` 延續瀏覽器直連；`local-gateway` 由同一個 localhost process 提供受限 `/api/odata/{service_id}/{entity_set}` relay。Gateway 僅負責 SAP TLS、certificate pin、Basic Auth 與 GET relay，不承擔業務 mapping，也不接受任意上游網址。
 
-網站採用「Agent 對話區 + SAP SD 工作台」的並排使用方式。自然語言任務輸入位於 ChatGPT／Codex，而非網站內嵌的聊天框；右側網站是使用者與 Agent 共看的工作台。
+## 頁面與工具
 
-```text
-ChatGPT／Codex Agent                  SAP SD 跨文件查詢工作台
-─────────────────────                ─────────────────────────
-使用者：查詢訂單 100001 的            目前選取訂單：100001
-出貨與請款狀態                        搜尋結果／訂單明細
+| WebMCP tool | 頁面行為 | SAP 操作 |
+| --- | --- | --- |
+| `search_sales_orders` | 套用客戶、日期與狀態條件，更新結果表 | `GET` SalesOrderCollection |
+| `get_sales_order` | 選取訂單並更新摘要與明細 | `GET` SalesOrderCollection(key) |
+| `get_related_deliveries` | 顯示訂單的交貨節點 | `GET` OutboundDeliveryCollection |
+| `get_related_billing_documents` | 顯示訂單的請款節點 | `GET` BillingDocumentCollection |
 
-Agent：呼叫網站工具                   訂單 → 外向交貨 → 請款文件
-• get_sales_order                     文件狀態與擷取時間
-• get_related_deliveries
-• get_related_billing_documents
+UI 操作與 WebMCP `execute()` 共用同一組 application handlers，因此 Agent 回傳的結構化結果與畫面狀態一致。畫面只顯示治理後的摘要、狀態、擷取時間與 provenance，不顯示原始 OData payload、完整 URL 或憑證。
+
+## Runtime contract
+
+語意模型 `semantic_models/sap_sd/model.yaml` 已升版至 `0.5.0`，並宣告三個 OData V2 runtime service selector：
+
+- `SAP_ODATA_BASE_URL`
+- `SAP_DELIVERY_ODATA_BASE_URL`
+- `SAP_BILLING_ODATA_BASE_URL`
+
+`src/semantic_model/runtime.py` 會從已通過 Phase 03 strict validation 的模型編譯出 `build/phase-06/runtime-bindings.json`。artifact 包含 model/version、操作輸入輸出 schema、private binding、GET-only policy 與 SHA-256；瀏覽器啟動時會驗證 artifact hash、model identity 與 service selector。
+
+前端 runtime 規則如下：
+
+1. 只接受 HTTPS service root，拒絕 query、fragment、userinfo 與非 allowlist service；Gateway profile 只把 service id 暴露給瀏覽器。
+2. 僅送出 `GET`，固定 `credentials: omit`、`cache: no-store`，並限制 `$select`、`$filter`、`$top` 與 `__next` 分頁。Gateway 另以 CA trust 加 SHA-256 certificate pin 驗證 SAP peer。
+3. SAP OData V2 回應只取 `d.results`；下一頁必須仍在相同 service root，最多正規化 50 筆。
+4. 日期、狀態與文件關聯在 client 端轉成 canonical schema；錯誤只回傳可解釋的 sanitized code/message。
+5. direct-browser profile 的任何 CORS、TLS、驗證或 OData schema 失敗都停止；local-gateway profile 只作為因目標瀏覽器憑證相容性限制而明確選擇的固定 transport，不作自動 fallback。
+
+## 建置與啟動
+
+在 `webmcp_semantic_erp_agent` 執行：
+
+```powershell
+$env:UV_CACHE_DIR='D:\lab_project\3way_match\.uv-cache-semantic'
+uv run python -m semantic_model.cli validate --model semantic_models/sap_sd/model.yaml --evidence semantic_models/sap_sd/evidence/tenant-binding-evidence.json --official-evidence semantic_models/sap_sd/evidence/official-s4hana-2023.json --schema semantic_models/sap_sd/model.schema.json
+uv run python -m semantic_model.cli compile-conditions --model semantic_models/sap_sd/model.yaml --evidence semantic_models/sap_sd/evidence/tenant-binding-evidence.json --official-evidence semantic_models/sap_sd/evidence/official-s4hana-2023.json --schema semantic_models/sap_sd/model.schema.json --output-dir build/phase-05
+uv run python -m semantic_model.cli compile-runtime --model semantic_models/sap_sd/model.yaml --evidence semantic_models/sap_sd/evidence/tenant-binding-evidence.json --official-evidence semantic_models/sap_sd/evidence/official-s4hana-2023.json --schema semantic_models/sap_sd/model.schema.json --output build/phase-06/runtime-bindings.json
+
+cd frontend
+npm install --ignore-scripts
+npm run build
+cd ..
+
+uv run python scripts/serve_phase06.py --condition A --transport local-gateway --port 5173
 ```
 
-工作台至少維護三類前端狀態：搜尋條件與結果清單、目前選取的銷售訂單、訂單至交貨與請款的文件流程。四個 WebMCP tools 必須以網站既有邏輯處理這些狀態：查詢後更新結果，並將同一份結果回傳 Agent；Agent 不需要透過視覺辨識或脆弱的 DOM selector 推測資料。
+`--condition` 必須是 `A`、`B` 或 `C`；`--transport` 可選 `direct-browser` 或 `local-gateway`，A/B/C 評估時必須固定同一 profile。local-gateway 需要本機 `.env` 額外提供 `SAP_ODATA_CA_CERT` 與 `SAP_ODATA_CERT_SHA256`。預設綁定與 `.env` 只在本機使用，不能提交版本庫。若要測試另一條件，先停止目前啟動器，再重新指定 `--condition`。
+啟動後請以 `http://localhost:5173` 開啟工作台；啟動器預設 host 為 `localhost`。
 
-### 四個工具與頁面狀態
+## 驗證與通過條件
 
-| 工具 | 讀取或更新的頁面狀態 |
-| --- | --- |
-| `search_sales_orders` | 套用查詢條件並更新訂單結果清單。 |
-| `get_sales_order` | 讀取或設定目前選取訂單，並更新訂單明細。 |
-| `get_related_deliveries` | 依目前或指定訂單更新交貨節點與狀態。 |
-| `get_related_billing_documents` | 依目前或指定訂單更新請款節點與狀態。 |
+自動化檢查：
 
-網頁可保留一般使用者可操作的結構化搜尋表單，作為非 WebMCP 瀏覽器的正常介面；但它不是 Agent 的自然語言入口，也不屬於 WebMCP tool invocation。
+```powershell
+$env:UV_CACHE_DIR='D:\lab_project\3way_match\.uv-cache-semantic'
+uv run python -m pytest -q
+node scripts/smoke_webmcp_registration.mjs build/phase-05/a-technical-tools.json build/phase-05/b-typed-tools.json build/phase-05/c-semantic-tools.json
+```
 
-## 本階段工作
+目前已驗證：Python 測試全數通過、前端 Vite production build 通過、Node WebMCP registration smoke 通過、啟動器可提供 `/runtime/config.json`、`/runtime/tool-catalog.json`、`/runtime/bindings.json` 且使用 `Cache-Control: no-store`。
 
-1. 在頂層頁面以 JavaScript 註冊 WebMCP tools。
-2. 實作搜尋、選取訂單與文件流程三類頁面狀態。
-3. 讓每個 tool execute() 同時更新網站工作台並回傳結構化結果。
-4. 共用 Application Actions 在瀏覽器端再次驗證參數與唯讀政策。
-5. 以本機環境變數提供原型所需的 SAP URL 與驗證設定；不得將值提交版本庫。
-6. 實作 OData V2 `$filter`、`$select`、`$top` 與分頁正規化。
-7. 以 `$metadata` 核對 entity set、欄位與文件關聯。
-8. 保留 protocol、model version、retrieved time 與 request id 等 provenance。
+人工 acceptance gate：在支援 WebMCP 的目標瀏覽器開啟頁面，確認能發現四個工具，依序執行搜尋、訂單明細、交貨與請款查詢；同時確認空結果、分頁、失敗與 provenance 均可解釋。此 gate 需要目標瀏覽器與可用的 SAP tenant，不能由離線 fixture 取代。
 
-## 安全限制
+## 安全與資料治理
 
-- 僅允許 HTTP GET。
-- 本研究為隔離教學環境中的原型；SAP 帳號密碼由本機 `.env` 提供，不宣稱此方式適用於正式部署。
-- SAP 受信任憑證由 Windows 憑證存放區管理，不放入 `.env`、前端原始碼或 WebMCP tool definitions。
-- 網站不保存 OpenAI API key，也不透過網站內嵌的 LLM API 選擇工具。
-- 不將實際端點、憑證或原始交易列提交至版本庫。
-- 不自動 fallback 到 mock 或其他協定。
-- 若直接連線因 CORS、TLS、驗證或 OData 設定失敗，停止並請研究者處理，不自行加入 proxy 或 destination。
+- 來源遵循 `webmcp.sap_sd.odata` 與 `webmcp.sap_sd.semantic_model` catalog；不借用其他 SAP adapter、analytics snapshot、fixture 或 mock。
+- SAP 帳密只由本機 `.env` 提供；不寫入 artifact、tool catalog、前端 bundle、文件或 git。
+- 不記錄 tenant endpoint、raw `$metadata`、raw rows、完整錯誤 payload 或業務憑證。
+- 若 runtime config、model hash、binding hash 或 service selector 不一致，啟動或執行立即失敗。
 
-## 明確排除
+## 後續工作
 
-OData V4 不列入本階段正式實驗；若後續驗證成功，只作為 optional extension 或研究限制後的未來工作。
-
-## 通過條件
-
-Phase 1 的直接連線閘門已通過；四個工具能以人工測試直接查詢 SAP V2。在 ChatGPT／Codex 內建瀏覽器中，Agent 能發現目前頁面註冊的工具，工具呼叫後可同步更新網站工作台。空結果、錯誤、分頁與來源資訊均可解釋。
+完成目標瀏覽器的四工具 live acceptance 後，再把 sanitized 結果與 request trace 補入研究紀錄；任何 binding 或 OData schema 變更都必須重新跑 Phase 03 strict gate、Phase 05 條件編譯與 Phase 06 runtime artifact 驗證。

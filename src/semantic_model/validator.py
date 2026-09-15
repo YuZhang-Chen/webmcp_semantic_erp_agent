@@ -92,6 +92,21 @@ def _reference_issues(model: dict[str, Any]) -> Iterable[ValidationIssue]:
     operations = model.get("operations", {})
     output_schemas = model.get("output_schemas", {})
     bindings = model.get("bindings", {})
+    runtime_services = model.get("runtime_services", {})
+
+    allowed_selectors = {
+        "SAP_ODATA_BASE_URL",
+        "SAP_DELIVERY_ODATA_BASE_URL",
+        "SAP_BILLING_ODATA_BASE_URL",
+    }
+    for service_id, service in runtime_services.items():
+        selector = service.get("runtime_selector") if isinstance(service, dict) else None
+        if selector not in allowed_selectors:
+            yield _issue(
+                "E_RUNTIME_SELECTOR",
+                f"/runtime_services/{service_id}/runtime_selector",
+                "runtime selector is not an allowlisted SAP OData selector",
+            )
 
     actual_operations = set(operations)
     if actual_operations != CANONICAL_OPERATIONS:
@@ -177,6 +192,19 @@ def _reference_issues(model: dict[str, Any]) -> Iterable[ValidationIssue]:
                     "Agent-visible parameters must have a non-empty business description",
                 )
         binding = bindings[binding_ref]
+        if binding.get("service_id") not in runtime_services:
+            yield _issue(
+                "E_UNKNOWN_RUNTIME_SERVICE",
+                f"/bindings/{binding_ref}/service_id",
+                f"service {binding.get('service_id')!r} is not declared in runtime_services",
+            )
+        enrichment = binding.get("enrichment")
+        if isinstance(enrichment, dict) and enrichment.get("service_id") not in runtime_services:
+            yield _issue(
+                "E_UNKNOWN_RUNTIME_SERVICE",
+                f"/bindings/{binding_ref}/enrichment/service_id",
+                f"service {enrichment.get('service_id')!r} is not declared in runtime_services",
+            )
         bound_parameters = set(binding.get("parameters", {}))
         if bound_parameters != expected_parameters:
             yield _issue(

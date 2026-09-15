@@ -1,10 +1,21 @@
 model:
   id: sap-sd-webmcp
-  version: 0.4.0
+  version: 0.5.0
   status: validated
   protocol: odata-v2
   source_id: webmcp.sap_sd.odata
   model_source_id: webmcp.sap_sd.semantic_model
+
+runtime_services:
+  sales_order_service:
+    runtime_selector: SAP_ODATA_BASE_URL
+    protocol: odata-v2
+  outbound_delivery_service:
+    runtime_selector: SAP_DELIVERY_ODATA_BASE_URL
+    protocol: odata-v2
+  billing_document_service:
+    runtime_selector: SAP_BILLING_ODATA_BASE_URL
+    protocol: odata-v2
 
 evidence_policy:
   validation_mode: multi_source

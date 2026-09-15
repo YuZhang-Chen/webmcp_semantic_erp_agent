@@ -4,7 +4,7 @@
   "title": "Governed SAP SD semantic model",
   "type": "object",
   "additionalProperties": false,
-  "required": ["model", "evidence_policy", "scope_boundary", "semantic_field_inventory", "policies", "formats", "business_fields", "entities", "relationships", "output_schemas", "operations", "bindings"],
+  "required": ["model", "runtime_services", "evidence_policy", "scope_boundary", "semantic_field_inventory", "policies", "formats", "business_fields", "entities", "relationships", "output_schemas", "operations", "bindings"],
   "properties": {
     "model": {
       "type": "object",
@@ -17,6 +17,19 @@
         "protocol": {"const": "odata-v2"},
         "source_id": {"const": "webmcp.sap_sd.odata"},
         "model_source_id": {"const": "webmcp.sap_sd.semantic_model"}
+      }
+    },
+    "runtime_services": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["runtime_selector", "protocol"],
+        "properties": {
+          "runtime_selector": {"enum": ["SAP_ODATA_BASE_URL", "SAP_DELIVERY_ODATA_BASE_URL", "SAP_BILLING_ODATA_BASE_URL"]},
+          "protocol": {"const": "odata-v2"}
+        }
       }
     },
     "evidence_policy": {
