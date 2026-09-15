@@ -18,9 +18,10 @@ diagnostic = ["requests>=2.32,<3", "python-dotenv>=1.0,<2"]
 
 [project.scripts]
 semantic-model = "semantic_model.cli:main"
+phase07-experiment = "experiment.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/semantic_model"]
+packages = ["src/semantic_model", "src/experiment"]
 
 [tool.pytest.ini_options]
 addopts = "-q -p no:cacheprovider"

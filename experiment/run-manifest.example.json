@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "run_id": "P01-A-R1",
+  "task_id": "P01",
+  "condition": "A",
+  "repetition": 1,
+  "transport": "local-gateway",
+  "ground_truth_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "scoring_policy_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "agent": {
+    "provider": "record-before-pilot",
+    "model": "record-before-pilot",
+    "reasoning": "record-before-pilot",
+    "temperature": null,
+    "tool_call_limit": 8,
+    "timeout_seconds": 120
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "duplicate_call_policy": "incorrect",
+  "maximum_retries": 1,
+  "allowed_optional_operations": {
+    "D1": [],
+    "D2": ["get_sales_order"],
+    "D3": ["get_sales_order"]
+  },
+  "metric_notes": {
+    "tool_selection_accuracy": "Measures the correctness of tool decisions that were made; completeness is assessed by task_success.",
+    "parameter_accuracy": "Only canonical task-relevant parameters declared before execution are scored.",
+    "task_success": "Requires all Ground Truth operations to succeed with correct parameters and the reported outcome to contain the expected outcome."
+  }
+}

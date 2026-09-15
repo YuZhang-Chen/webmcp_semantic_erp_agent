@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "corpus_id": "sap-sd-phase07-pilot",
+  "status": "design_only",
+  "source_id": "webmcp.sap_sd.odata",
+  "tasks": [
+    {"task_id": "P01", "difficulty": "D1", "shape": "single_document_query"},
+    {"task_id": "P02", "difficulty": "D2", "shape": "known_order_to_delivery"},
+    {"task_id": "P03", "difficulty": "D2", "shape": "known_order_to_billing_or_both"},
+    {"task_id": "P04", "difficulty": "D3", "shape": "search_then_one_downstream_type"},
+    {"task_id": "P05", "difficulty": "D3", "shape": "search_then_delivery_and_billing"}
+  ],
+  "notice": "This file fixes pilot coverage only. It is not Ground Truth and contains no SAP case values."
+}

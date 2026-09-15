@@ -60,6 +60,25 @@ export type RuntimeConfig = {
   client?: string;
   language?: string;
   services: Record<string, string>;
+  experiment?: ExperimentContext;
+};
+
+export type ExperimentContext = {
+  schema_version: "1.0";
+  run_id: string;
+  task_id: string;
+  condition: Condition;
+  repetition: number;
+  endpoint: "/api/experiment/events";
+};
+
+export type PageStateSnapshot = {
+  selected_order_id: string | null;
+  search_count: number | null;
+  order_detail_present: boolean;
+  delivery_count: number | null;
+  billing_count: number | null;
+  error_sections: string[];
 };
 
 export type RuntimeArtifact = {

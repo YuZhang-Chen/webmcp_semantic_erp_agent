@@ -13,6 +13,7 @@ AGENTS.md
 .pytest_cache/
 __pycache__/
 build/
+experiment/private/
 
 # Frontend-generated dependencies, builds and local Vite output.
 frontend/node_modules/

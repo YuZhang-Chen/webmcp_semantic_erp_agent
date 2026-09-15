@@ -3,6 +3,8 @@ import { AlertTriangle, ChevronRight, CircleHelp, Database, Loader2, Search, Ser
 import { loadRuntime } from "./runtime/config";
 import type { BillingList, CanonicalCriteria, DeliveryList, LoadState, RuntimeConfig, RuntimeArtifact, SalesOrderDetail, SalesOrderList, ToolCatalog } from "./runtime/types";
 import { ActionFailure, ODataClient } from "./runtime/odata";
+import { ExperimentLogger } from "./runtime/experiment";
+import type { PageStateSnapshot } from "./runtime/types";
 import { registerConditionTools } from "../../prototype/webmcp/register-semantic-tools.mjs";
 
 type ModelContext = { registerTool: (tool: Record<string, unknown>, options: { signal: AbortSignal }) => Promise<void> };
@@ -33,9 +35,18 @@ function App() {
   const [deliveries, setDeliveries] = useState<Slice<DeliveryList>>(empty());
   const [billings, setBillings] = useState<Slice<BillingList>>(empty());
   const clientRef = useRef<ODataClient | null>(null);
+  const loggerRef = useRef<ExperimentLogger | null>(null);
+  const pageStateRef = useRef<PageStateSnapshot>({ selected_order_id: null, search_count: null, order_detail_present: false, delivery_count: null, billing_count: null, error_sections: [] });
   const handlersRef = useRef<Record<Operation, (args: any) => Promise<any>>>({} as Record<Operation, (args: any) => Promise<any>>);
 
-  useEffect(() => { void loadRuntime().then((loaded) => { clientRef.current = new ODataClient(loaded.config, loaded.bindings); setRuntime(loaded); }).catch((error) => setBootError(error instanceof Error ? error.message : "runtime 設定載入失敗。")); }, []);
+  useEffect(() => { void loadRuntime().then(async (loaded) => {
+    clientRef.current = new ODataClient(loaded.config, loaded.bindings);
+    if (loaded.config.experiment) {
+      loggerRef.current = new ExperimentLogger(loaded.config.experiment, () => structuredClone(pageStateRef.current));
+      await loggerRef.current.start();
+    }
+    setRuntime(loaded);
+  }).catch((error) => setBootError(error instanceof Error ? error.message : "runtime 設定載入失敗。")); }, []);
 
   useEffect(() => {
     if (!runtime) return;
@@ -48,7 +59,7 @@ function App() {
       get_sales_order: (args: any) => handlersRef.current.get_sales_order(args),
       get_related_deliveries: (args: any) => handlersRef.current.get_related_deliveries(args),
       get_related_billing_documents: (args: any) => handlersRef.current.get_related_billing_documents(args),
-    }).then((registered: AbortController) => { controller = registered; setRegistration("ready"); }).catch(() => setRegistration("error"));
+    }, loggerRef.current).then((registered: AbortController) => { controller = registered; setRegistration("ready"); }).catch(() => setRegistration("error"));
     return () => controller?.abort();
   }, [runtime]);
 
@@ -56,6 +67,11 @@ function App() {
     const client = clientRef.current;
     if (!client) throw new Error("SAP runtime 尚未準備完成。");
     setSlice({ loading: true, data: null, error: "" });
+    pageStateRef.current.error_sections = pageStateRef.current.error_sections.filter((item) => item !== operation);
+    if (operation === "search_sales_orders") pageStateRef.current.search_count = null;
+    if (operation === "get_sales_order") pageStateRef.current.order_detail_present = false;
+    if (operation === "get_related_deliveries") pageStateRef.current.delivery_count = null;
+    if (operation === "get_related_billing_documents") pageStateRef.current.billing_count = null;
     try {
       const result = await ({
         search_sales_orders: () => client.searchSalesOrders(args),
@@ -64,10 +80,16 @@ function App() {
         get_related_billing_documents: () => client.getRelatedBillingDocuments(args),
       }[operation]() as Promise<T>);
       setSlice({ loading: false, data: result, error: "" });
+      const value = result as any;
+      if (operation === "search_sales_orders") pageStateRef.current.search_count = value.count;
+      if (operation === "get_sales_order") pageStateRef.current.order_detail_present = Boolean(value.sales_order);
+      if (operation === "get_related_deliveries") pageStateRef.current.delivery_count = value.count;
+      if (operation === "get_related_billing_documents") pageStateRef.current.billing_count = value.count;
       return result;
     } catch (error) {
       const message = error instanceof ActionFailure ? error.detail.message : error instanceof Error ? error.message : "查詢失敗。";
       setSlice({ loading: false, data: null, error: message });
+      if (!pageStateRef.current.error_sections.includes(operation)) pageStateRef.current.error_sections.push(operation);
       throw error;
     }
   }
@@ -78,16 +100,17 @@ function App() {
       const id = String(args.sales_order_id ?? "").trim();
       setSelectedOrderId(id);
       setDeliveries(empty()); setBillings(empty());
+      pageStateRef.current = { ...pageStateRef.current, selected_order_id: id || null, delivery_count: null, billing_count: null };
       return invoke("get_sales_order", args, setDetail);
     },
     get_related_deliveries: async (args) => {
       const id = String(args.sales_order_id ?? "").trim();
-      if (id && id !== selectedOrderId) { setSelectedOrderId(id); setDetail(empty()); setBillings(empty()); }
+      if (id && id !== selectedOrderId) { setSelectedOrderId(id); setDetail(empty()); setBillings(empty()); pageStateRef.current = { ...pageStateRef.current, selected_order_id: id, order_detail_present: false, billing_count: null }; }
       return invoke("get_related_deliveries", args, setDeliveries);
     },
     get_related_billing_documents: async (args) => {
       const id = String(args.sales_order_id ?? "").trim();
-      if (id && id !== selectedOrderId) { setSelectedOrderId(id); setDetail(empty()); setDeliveries(empty()); }
+      if (id && id !== selectedOrderId) { setSelectedOrderId(id); setDetail(empty()); setDeliveries(empty()); pageStateRef.current = { ...pageStateRef.current, selected_order_id: id, order_detail_present: false, delivery_count: null }; }
       return invoke("get_related_billing_documents", args, setBillings);
     },
   };

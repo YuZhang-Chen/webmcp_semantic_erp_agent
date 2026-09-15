@@ -59,7 +59,7 @@ export function canonicalizeArguments(condition, operationId, args) {
   return { sales_order_id: args.SalesOrder };
 }
 
-export async function registerConditionTools(modelContext, catalog, actions) {
+export async function registerConditionTools(modelContext, catalog, actions, observer = null) {
   if (!modelContext || typeof modelContext.registerTool !== "function") {
     throw new TypeError("a WebMCP modelContext with registerTool() is required");
   }
@@ -94,7 +94,19 @@ export async function registerConditionTools(modelContext, catalog, actions) {
           description: catalogTool.description,
           inputSchema: catalogTool.inputSchema,
           annotations: catalogTool.annotations,
-          execute: (args) => action(canonicalizeArguments(catalog.condition, catalogTool.operationId, args)),
+          execute: async (args) => {
+            const token = observer?.started?.(catalogTool.name, catalogTool.operationId, args);
+            try {
+              const canonical = canonicalizeArguments(catalog.condition, catalogTool.operationId, args);
+              observer?.canonicalized?.(token, canonical);
+              const result = await action(canonical);
+              await observer?.finished?.(token, true, result);
+              return result;
+            } catch (error) {
+              await observer?.finished?.(token, false, undefined, error);
+              throw error;
+            }
+          },
         },
         { signal: controller.signal },
       );

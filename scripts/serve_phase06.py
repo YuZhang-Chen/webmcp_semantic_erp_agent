@@ -24,6 +24,8 @@ ALLOWED_ENV = {
     "SAP_BILLING_ODATA_BASE_URL",
     "SAP_ODATA_CA_CERT",
     "SAP_ODATA_CERT_SHA256",
+    "PHASE07_HMAC_KEY",
+    "HMAC_KEY",
 }
 CATALOG_NAMES = {"A": "a-technical-tools.json", "B": "b-typed-tools.json", "C": "c-semantic-tools.json"}
 
@@ -170,6 +172,26 @@ class Handler(SimpleHTTPRequestHandler):
             return
         self.path = "/" + target.relative_to(self.runtime["frontend_root"]).as_posix()
         super().do_GET()
+
+    def do_POST(self) -> None:  # noqa: N802
+        if urlparse(self.path).path != "/api/experiment/events" or not self.runtime.get("experiment_logger"):
+            self.send_error(404)
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            self.send_error(400)
+            return
+        if self.headers.get_content_type() != "application/json" or length <= 0 or length > 131072:
+            self.send_error(400)
+            return
+        try:
+            event = json.loads(self.rfile.read(length).decode("utf-8"))
+            stored = self.runtime["experiment_logger"].append(event)
+        except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
+            self.send_error(409, str(error))
+            return
+        self.send_json({"accepted": True, "sequence": stored["sequence"]})
 
     def proxy_odata(self, path: str) -> None:
         parts = path.removeprefix("/api/odata/").split("/")
