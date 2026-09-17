@@ -19,6 +19,8 @@ diagnostic = ["requests>=2.32,<3", "python-dotenv>=1.0,<2"]
 [project.scripts]
 semantic-model = "semantic_model.cli:main"
 phase07-experiment = "experiment.cli:main"
+phase08-experiment = "experiment.phase08_cli:main"
+phase08-budget-experiment = "experiment.budget_cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/semantic_model", "src/experiment"]

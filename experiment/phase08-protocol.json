@@ -1,0 +1,35 @@
+{
+  "schema_version": "phase08-1.0",
+  "protocol": "phase08-ab-c-experiment",
+  "source_id": "webmcp.sap_sd.odata",
+  "seed": 20260915,
+  "pilot": {
+    "task_count": 5,
+    "repetitions": 3,
+    "run_count": 45,
+    "difficulty_quota": {"D1": 1, "D2": 2, "D3": 2}
+  },
+  "formal": {
+    "task_count": 20,
+    "repetitions": 3,
+    "run_count": 180,
+    "difficulty_quota": {"D1": 4, "D2": 8, "D3": 8}
+  },
+  "conditions": ["A", "B", "C"],
+  "agent": {
+    "model": "gpt-5.6-sol",
+    "reasoning": "medium",
+    "timeout_seconds": 120,
+    "tool_call_limit": 8,
+    "fresh_session_per_run": true
+  },
+  "review_protocol": "human_only",
+  "answer_keys": ["sales_orders", "deliveries", "billings"],
+  "timeout_gate": {
+    "browser_attachment_verified": true,
+    "turn_status": "interrupted",
+    "timeout_seconds": 120,
+    "status": "waived",
+    "waiver_note": "Researcher explicitly waived the controlled interruption evidence on 2026-09-16; timeout enforcement remains an acknowledged protocol limitation."
+  }
+}

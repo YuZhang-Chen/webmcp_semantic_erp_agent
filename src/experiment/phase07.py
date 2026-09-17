@@ -22,6 +22,7 @@ ERROR_CATEGORIES = {
     "parameter_error",
     "sap_query_error",
     "answer_synthesis_error",
+    "tool_budget_exhausted",
 }
 IDENTIFIER_KEYS = {
     "SalesOrder",
@@ -286,5 +287,8 @@ def score_run(events: list[Mapping[str, Any]], case: Mapping[str, Any], policy: 
         "tool_call_limit_exceeded": over_limit,
         "tool_decisions": scored_decisions,
         "scored_parameters": parameter_total,
+        "tool_selection_correct": correct_decisions,
+        "parameter_correct": parameter_correct,
+        "task_successes": int(task_success),
         "error_categories": sorted(set(errors)),
     }
