@@ -2,7 +2,7 @@
 
 ## 文件定位
 
-本文件是 Phase 02 的 canonical 設計產物，定義 SAP SD 跨文件查詢原型的企業語意、四個 canonical operations、輸入／輸出契約、private OData binding 候選及治理規則。它是 Phase 03 機器可讀模型與 validator 的輸入，不是可直接註冊或執行的 WebMCP tool definition。
+本文件是現行 SAP SD 語意模型的說明文件。機器可讀契約以 `semantic_models/sap_sd/model.yaml` 為準（版本 `0.5.0`、狀態 `validated`）；本文件說明四個 canonical operations、輸入／輸出契約、已驗證的 OData binding 與治理規則，不是可直接註冊或執行的 WebMCP tool definition。
 
 本設計遵守下列固定邊界：
 
@@ -37,7 +37,7 @@ quantity、customer 欄位只驗證 property、EDM type 與長度。
 | 欄位 | 值 | 規則 |
 | --- | --- | --- |
 | `model_id` | `sap-sd-webmcp` | 穩定且不可因實驗條件改名。 |
-| `model_version` | `0.3.0` | Multi-source evidence policy 版；語意或契約變更必須遞增。 |
+| `model_version` | `0.5.0` | 與目前已驗證的機器可讀模型一致；語意或契約變更必須遞增。 |
 | `status` | `validated` | 已通過 Phase 03 multi-source strict gate。 |
 | `protocol` | `odata-v2` | 不自動 fallback 到 V4。 |
 | `source_id` | `webmcp.sap_sd.odata` | live SAP source；authority 是 tenant `$metadata`。 |
@@ -133,16 +133,14 @@ quantity、customer 欄位只驗證 property、EDM type 與長度。
 
 ## Delivery 與 Billing 正式業務欄位定義
 
-下列定義是 public semantic contract；candidate property 只是 private binding 候選，必須在
-對應 SAP S/4HANA 2023 官方 API、tenant metadata、唯讀 GET 與 known-case business
-cross-check 完成後才能標示為 `tenant_verified`。
+下列定義是 public semantic contract。列出的 SAP property 已依 SAP S/4HANA 2023 官方 API、tenant metadata、唯讀 GET 與 known-case business cross-check 驗證；status code 的完整範圍由官方定義治理，tenant cases 用來確認代表性語意。
 
-| Semantic field | 正式定義 | Candidate property | 邊界 |
+| Semantic field | 正式定義 | SAP property | 邊界 |
 | --- | --- | --- | --- |
 | `delivery_date` | Outbound Delivery 完成 Post Goods Issue 時，SAP 記錄的實際貨物移動日期。 | `ActualGoodsMovementDate` | 代表系統中的實際出貨事件，不推定法律上的所有權移轉時間。 |
-| `delivery_status` | Outbound Delivery 表頭層級的整體貨物移動處理狀態，用以判斷 PGI 是否尚未開始、部分完成或完成。 | `OverallGoodsMovementStatus` | SAP code 的業務含義必須由 tenant evidence 或 SAP 權威定義確認。 |
+| `delivery_status` | Outbound Delivery 表頭層級的整體貨物移動處理狀態，用以判斷 PGI 是否尚未開始、部分完成或完成。 | `OverallGoodsMovementStatus` | 官方定義提供 code domain，代表性 tenant cases 已交叉驗證；不自行擴張 code 語意。 |
 | `billing_date` | Billing Document 的業務文件日期。 | `BillingDocumentDate` | 不以技術建立日期替代，也不推定為應收帳款付款基準日。 |
-| `billing_status` | Billing Document 向財務會計移轉及產生相關會計文件的處理狀態。 | `AccountingPostingStatus` | 不代表應收帳款已完成收款或清帳。 |
+| `billing_status` | Billing Document 向財務會計移轉及產生相關會計文件的處理狀態。 | `AccountingPostingStatus` | STATV domain 已通過 strict reconciliation；不代表應收帳款已完成收款或清帳。 |
 
 Delivery 與 Billing 使用各自明確的 OData V2 service selector，不以 Sales Order service 的同名
 欄位替代，也不在 service 間 silent fallback。
@@ -201,18 +199,18 @@ Delivery 與 Billing 使用各自明確的 OData V2 service selector，不以 Sa
 
 `count` 是本次正規化結果陣列長度，不宣稱是 SAP 端未分頁的全資料總數。空結果以空陣列和 `count: 0` 表示；單筆不存在以 `sales_order: null` 表示。錯誤必須走 Phase 06 定義的共用 error contract，不得以 raw OData error 代替業務輸出。
 
-## Private OData binding 候選
+## 已驗證的 OData binding
 
 ### Operation binding
 
-| Operation | Symbolic service | EntitySet／查詢方式 | 關鍵 property／關聯 | Evidence status | 下一個證據動作 |
-| --- | --- | --- | --- | --- | --- |
-| `search_sales_orders` | `sales_order_service` | `A_SalesOrder` collection GET/filter | `SalesOrder`、`SoldToParty`、`SalesOrderDate`、`OverallSDProcessStatus` | `tenant_verified` binding | 補 1–2 個 Sales Order status representative cases。 |
-| `get_sales_order` | `sales_order_service` | `A_SalesOrder` unique filter | `SalesOrder` | `tenant_verified` | 無。 |
-| `get_related_deliveries` | Sales Order flow + Delivery enrichment | `A_SalesOrderItmSubsqntProcFlow` filter，再查 `A_OutbDeliveryHeader` | category J、document ID、日期、status | `tenant_verified` | B 保持官方定義，不要求 tenant case。 |
-| `get_related_billing_documents` | Sales Order flow + Billing enrichment | `A_SalesOrderItmSubsqntProcFlow` filter，再查 `A_BillingDocument` | category M、document ID、日期、status | `tenant_verified` | 完整 domain 已由 SAP DDIC `STATV` value range 對齊。 |
+| Operation | Symbolic service | EntitySet／查詢方式 | 關鍵 property／關聯 | Evidence status |
+| --- | --- | --- | --- | --- |
+| `search_sales_orders` | `sales_order_service` | `A_SalesOrder` collection GET/filter | `SalesOrder`、`SoldToParty`、`SalesOrderDate`、`OverallSDProcessStatus` | `tenant_verified` binding；完整狀態 domain 依官方定義治理 |
+| `get_sales_order` | `sales_order_service` | `A_SalesOrder` unique filter | `SalesOrder` | `tenant_verified` |
+| `get_related_deliveries` | Sales Order flow + Delivery enrichment | `A_SalesOrderItmSubsqntProcFlow` filter，再查 `A_OutbDeliveryHeader` | category J、document ID、日期、status | `tenant_verified` |
+| `get_related_billing_documents` | Sales Order flow + Billing enrichment | `A_SalesOrderItmSubsqntProcFlow` filter，再查 `A_BillingDocument` | category M、document ID、日期、status | `tenant_verified`；`STATV` domain 依官方定義治理 |
 
-目前 tenant evidence 已證明 `A_SalesOrder`、`A_SalesOrderItmSubsqntProcFlow`、
+Tenant evidence 已證明 `A_SalesOrder`、`A_SalesOrderItmSubsqntProcFlow`、
 `SalesOrder`、`SubsequentDocument` 與 `SubsequentDocumentCategory` 的實際查詢路徑，並由兩項
 known-case 確認 `J = outbound_delivery`、`R = other`、`M = billing_document`。Delivery 與
 Billing service 的 document-level metadata／GET cross-check 另已確認四個候選欄位；Delivery
@@ -221,28 +219,28 @@ Billing service 的 document-level metadata／GET cross-check 另已確認四個
 
 ### Output field mapping
 
-| Business field | Candidate SAP property | Evidence status | 發布規則 |
+| Business field | SAP property | Evidence status | 發布規則 |
 | --- | --- | --- | --- |
 | `sales_order_id` | `SalesOrder` | `tenant_verified` | `Edm.String(10)`。 |
 | `customer_id` | `SoldToParty` | `tenant_verified` | `Edm.String(10)`。 |
 | `order_date` | `SalesOrderDate` | `tenant_verified` | `Edm.DateTime` 正規化為 full-date。 |
-| `order_status` | `OverallSDProcessStatus` | `partially_verified` | 官方 A/B/C 完整；補 tenant representative case 後升級。 |
+| `order_status` | `OverallSDProcessStatus` | `tenant_verified` binding | A/B/C domain 依官方定義治理；tenant observed C。 |
 | `delivery_id` | `SubsequentDocument` | `tenant_verified` | category J known case；`Edm.String(10)`。 |
 | `delivery_date` | `ActualGoodsMovementDate` | `tenant_verified` | Delivery enrichment metadata 與 known case 已核對。 |
 | `delivery_status` | `OverallGoodsMovementStatus` | `tenant_verified` | 官方 A/B/C；tenant observed A/C。 |
 | `billing_document_id` | `SubsequentDocument` | `tenant_verified` | category M known case；`Edm.String(10)`。 |
 | `billing_date` | `BillingDocumentDate` | `tenant_verified` | Billing enrichment metadata 與 known case 已核對。 |
-| `billing_status` | `AccountingPostingStatus` | `tenant_verified` field | SAP DDIC domain STATV：空白／A／B／C；tenant observed C。Semantic value 使用 `completely_processed`，不直接把 SAP 原文改寫成 `posted`。 |
+| `billing_status` | `AccountingPostingStatus` | `tenant_verified` binding | SAP DDIC domain STATV：空白／A／B／C；tenant observed C。Semantic value 使用 `completely_processed`，不直接把 SAP 原文改寫成 `posted`。 |
 
 ## Source evidence 規格
 
-Phase 03 採 multi-source validation，固定版本基準為 SAP S/4HANA 2023 / S4CORE 108：官方 API
+模型採 multi-source validation，固定版本基準為 SAP S/4HANA 2023 / S4CORE 108：官方 API
 定義提供 service/property 與完整 code domain，tenant `$metadata` 提供實際 type/length/hash，
 known-case runtime evidence 提供 representative semantic values，最後才執行 Semantic Binding
 Validation。Sales Order、document-flow、Delivery enrichment 與 Billing enrichment 的 binding
 evidence 已完成；Sales Order status 與 Billing STATV domain 均已通過 strict reconciliation。
 
-Phase 03 建立 machine-readable evidence 時，每筆 evidence 最少包含：
+驗證 evidence 使用下列可追溯欄位：
 
 - 穩定的 `source_evidence_id`。
 - `source_id: webmcp.sap_sd.odata`。
@@ -252,7 +250,7 @@ Phase 03 建立 machine-readable evidence 時，每筆 evidence 最少包含：
 - 每個 binding 的 `tenant_verified`、`partially_verified` 或 `unverified` 狀態。
 - GET/filter smoke-test 結果摘要；不得保存 business key、raw row 或 raw metadata。
 
-若 Delivery 或 Billing 需要新的 SAP service，必須先更新 `.env.example` 的 credential-free selector、資料來源目錄與 browser connectivity gate；不得把其他服務硬編碼成 fallback。
+若未來新增 Delivery 或 Billing 以外的 SAP service，必須先更新 `.env.example` 的 credential-free selector、資料來源目錄與 browser connectivity gate；不得把其他服務硬編碼成 fallback。
 
 ## Read-only 與 fail-closed policy
 
@@ -260,21 +258,18 @@ Phase 03 建立 machine-readable evidence 時，每筆 evidence 最少包含：
 2. 未列入四個 canonical operations 的操作一律拒絕。
 3. 未列入參數 schema 的欄位一律拒絕。
 4. 未驗證或 evidence hash 不符的 binding 不得編譯成 active tool。
-5. status enum 尚未建立受治理 SAP code mapping 時，不得接受 status filter 或回傳臨時翻譯值。
+5. 只接受已納入 `model.yaml` 並通過驗證的 status code mapping；不得回傳臨時翻譯值。
 6. 不得把 synthetic fixture、ground truth、其他 SAP adapter、舊 endpoint 或不同 OData 版本當成 fallback。
 7. Agent-visible artifact 不得包含 private binding 或 sensitive configuration。
 
-## Phase 03 交接與完成矩陣
+## 驗證狀態
 
-| Phase 02 要求 | 本文件證據 | 狀態 |
+| 模型項目 | 現行證據 | 狀態 |
 | --- | --- | --- |
-| 四個 entity 的業務描述 | 企業實體 | 完成 |
-| 訂單、交貨、請款關係 | 文件關係 | 完成 |
-| 四個操作用途與適用情境 | Canonical operations | 完成 |
-| 參數名稱、型別、格式、必填 | 各 operation parameter table | 完成；metadata-derived length／enum 明示為 Phase 03 evidence gate |
-| 輸出欄位 | Canonical output schemas | 完成 |
-| OData binding 候選映射 | Private OData binding 候選 | 完成；未證實項目保持 `unverified` |
-| `$metadata` 後續執行前檢查 | Source evidence 規格、fail-closed policy | 完成 |
-| 每個欄位可追溯至工具、任務或指標 | entity、parameter、output coverage columns | 完成 |
+| 四個 entity 與文件關係 | 企業實體、文件關係 | 已納入模型 |
+| 四個操作與參數契約 | Canonical operations | 已納入模型並通過驗證 |
+| 輸出欄位與 trace | Canonical output schemas | 已納入模型並通過驗證 |
+| SAP bindings 與狀態碼 | 已驗證的 OData binding、Source evidence | 多來源 evidence 已核對 |
+| 唯讀與 fail-closed policy | Read-only 與 fail-closed policy | 僅允許 GET；拒絕未驗證 binding |
 
-Phase 03 不得把本文件中的 unresolved item 靜默補值。只有完成 tenant evidence、通過正負向 validation 並產生 canonical model hash 後，模型狀態才能由 `draft` 轉為 `validated`。
+目前模型為 `0.5.0` 且狀態為 `validated`。後續如需變更語意、binding 或公開契約，應更新機器可讀模型、重新驗證並升版；本說明文件需同步反映核准後的模型內容。

@@ -1,79 +1,41 @@
-# 研究導向實作階段
+# 實作與方法紀錄
 
-本目錄將「WebMCP 之 ERP 跨文件查詢代理：以 SAP SD 訂單流程為例」拆成可逐步吸收的十個階段。每個階段都遵循：理解概念、檢查證據、完成最小產出、測試或核對、整理論文素材、經確認後再進入下一階段。
+本目錄保留 Phase 03–08 的模型驗證、工具條件、執行架構、評分方法與實驗流程紀錄。文件中的版本號與階段狀態只代表當時紀錄；遇到與現況不同之處時，以現行模型契約與固定研究資料為準：
+
+1. [`semantic_models/sap_sd/model.yaml`](../../semantic_models/sap_sd/model.yaml)：現行語意模型、操作、binding 與 runtime policy。
+2. [`research_artifacts/`](../../research_artifacts/README.md)：Study 1 與 Study 2 的公開 protocol、去識別評分、事件投影與報告。
+3. [`README.md`](../../README.md)：研究包範圍、資料限制與發布說明。
 
 ## 研究主線
 
 ```text
-研究目的與控制變因
+Multi-source model validation
         ↓
-Browser → SAP OData 連線閘門
+Deterministic compiler and A/B/C tool catalogs
         ↓
-Semantic Analytics（設計參考）
+Browser WebMCP + shared SAP OData V2 runtime
         ↓
-SAP SD 最小語意模型
+Ground Truth, execution trace and offline scoring
         ↓
-Model Validation
+Study 1: 180 scored runs
         ↓
-Semantic Compiler → C Semantic Tools
-        ↓
-A Technical / B Typed / C Semantic
-        ↓
-WebMCP + Shared Application Actions + SAP OData V2
-        ↓
-Ground Truth + Agent Logging
-        ↓
-Pilot 與正式 A/B/C 實驗
-        ↓
-六頁研討會論文
+Study 2: 72 constrained-budget scored runs
 ```
 
-## 固定研究範圍
-
-- 研究情境：SAP SD 銷售訂單、外向交貨、請款文件的跨文件查詢。
-- 研究工具：`search_sales_orders`、`get_sales_order`、`get_related_deliveries`、`get_related_billing_documents`。
-- 執行權限：SAP 唯讀、只發出 HTTP GET。
-- 主要協定：已確認可用的 SAP OData V2。
-- Agent 入口：使用者在 ChatGPT／Codex 對話區下達自然語言任務；網站本身不內嵌 LLM 或 Agent Controller。
-- 網頁角色：網站註冊 WebMCP tools，並與 Agent 共用目前開啟頁面的搜尋條件、選取訂單與文件流程狀態。
-- 執行架構：保留 direct-browser 對照；因目標瀏覽器的 SAP 憑證缺少 SAN，正式原型可明確選擇 localhost Gateway transport。兩者都由瀏覽器端共用操作維持 WebMCP/UI 同步，SAP ERP 為系統後端。
-- 原型驗證：帳號密碼由本機 `.env` 提供；SAP 受信任憑證位於 Windows 憑證存放區。此作法只限隔離的教學原型。
-- 停止條件：direct-browser 的 CORS、TLS、驗證或 OData 連線測試失敗時，保留失敗證據；若研究者明確選擇 local-gateway，Gateway 必須固定、受限、只讀，且不得自動 fallback。
-- OData V4：工程上的 optional extension，不列為研討會主要研究階段。
-- 主要實驗：20 tasks × 3 conditions × 3 repetitions = 180 runs。
-- Pilot：5 tasks × 3 conditions × 3 repetitions = 45 runs。
-- 主要指標：Tool Selection Accuracy、Parameter Accuracy、Task Success Rate。
-
-## Git 版控限制
-
-- `docs/` 與其下的 `docs/phases/` 是研究規劃與正式產出，可納入 Git 版控及發布。
-- `docs/diagrams/` 保留本機可編輯與渲染圖檔，不納入 Git 版控；不得 force add。
-- 根目錄 `AGENTS.md` 同樣只供本機 Agent 使用，必須可讀但不得納入 Git 或發布到 remote repository。
-- `.gitignore` 只限制 Git 追蹤，不限制本機 Agent 存取；Agent 不得因該目錄被忽略而刪除、搬移或略過其中的規劃。
-- 必須先由根目錄 `.gitignore` 忽略 `docs/diagrams/`、`.env` 與本機 `AGENTS.md`，並驗證規則生效後，才能加入檔案或建立提交。
-- 任何 Git add／commit 都必須先取得研究者明確同意。
-
-## A/B/C 控制原則
-
-三組共用相同的 canonical execution layer、SAP binding、輸出與評分方式，只有 Agent 可看到的工具介面語意程度不同。
-
-三組也共用同一個網站畫面與頁面狀態；不能用不同 UI 或不同前端流程來影響 Agent 的選擇結果。
-
-- A Technical：OData 實體集與技術欄位導向的 baseline。
-- B Typed：型別、參數結構與一般功能描述的 baseline。
-- C Semantic：由 Semantic Model 驗證及編譯產生，含企業概念、文件關係、操作目的與唯讀政策。
+Study 1 與 Study 2 使用獨立排程、有效樣本數及統計分析。Phase 07 pilot 與開發用紀錄不納入兩項研究的正式結果。
 
 ## 階段索引
 
-| 文件 | 階段 |
+| 文件 | 內容 |
 | --- | --- |
-| [phase-00-research-scope.md](phase-00-research-scope.md) | 研究目的與控制變因 |
-| [phase-01-semantic-analytics-reference.md](phase-01-semantic-analytics-reference.md) | Browser–SAP 連線閘門與最小治理欄位 |
-| [phase-02-sap-sd-semantic-model.md](phase-02-sap-sd-semantic-model.md) | SAP SD 語意模型設計 |
-| [phase-03-model-validation.md](phase-03-model-validation.md) | Semantic Model 與 Validation |
-| [phase-04-semantic-compiler.md](phase-04-semantic-compiler.md) | Semantic Compiler 與 C 工具 |
-| [phase-05-baseline-conditions.md](phase-05-baseline-conditions.md) | A/B baseline 與 C semantic tools |
-| [phase-06-webmcp-odata-v2.md](phase-06-webmcp-odata-v2.md) | WebMCP 直接串接 SAP OData V2 |
-| [phase-07-ground-truth-logging.md](phase-07-ground-truth-logging.md) | Ground Truth 與 Agent logging |
-| [phase-08-ab-c-experiment.md](phase-08-ab-c-experiment.md) | Pilot 與正式 A/B/C 實驗 |
-| [phase-09-paper-integration.md](phase-09-paper-integration.md) | 論文整合 |
+| [phase-03-model-validation.md](phase-03-model-validation.md) | SAP 多來源證據、模型驗證與 binding 狀態 |
+| [phase-04-semantic-compiler.md](phase-04-semantic-compiler.md) | Semantic Compiler 與 C 組工具 |
+| [phase-05-baseline-conditions.md](phase-05-baseline-conditions.md) | A/B/C 條件定義與公平比較控制 |
+| [phase-06-webmcp-odata-v2.md](phase-06-webmcp-odata-v2.md) | WebMCP 工作台與 SAP OData V2 runtime |
+| [phase-07-ground-truth-logging.md](phase-07-ground-truth-logging.md) | Ground Truth、執行紀錄與離線評分方法 |
+| [phase-08-ab-c-experiment.md](phase-08-ab-c-experiment.md) | 主要 180-run 研究方法 |
+| [phase-08-constrained-budget-study.md](phase-08-constrained-budget-study.md) | 72-run 受限額度補充研究方法 |
+
+## 本機圖檔與版控
+
+`docs/diagrams/` 保留本機可編輯與渲染圖檔，依專案版控規則不追蹤、不發布。忽略規則不代表可刪除該目錄或其中內容。

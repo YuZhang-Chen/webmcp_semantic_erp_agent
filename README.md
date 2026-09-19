@@ -1,6 +1,6 @@
 # WebMCP Semantic ERP Agent
 
-A research prototype for comparing technical, typed, and semantic WebMCP tool descriptions in read-only SAP SD cross-document tasks.
+A research repository for comparing technical, typed, and semantic WebMCP tool descriptions in read-only SAP SD cross-document tasks.
 
 ## Research studies
 
@@ -39,4 +39,4 @@ The MIT license text is published by the [Open Source Initiative](https://openso
 
 本專案比較技術、型別與語意三種 WebMCP 工具描述在 SAP SD 唯讀跨文件任務中的表現。公開研究包將階段一 180 runs 與階段二 72 runs 分開保存，提供去識別逐次評分、排程、事件投影、統計摘要與完整性雜湊。SAP Ground Truth、實際任務提示、原始 Agent 回答及完整執行紀錄不公開；公開資料可重算彙總統計並稽核事件順序，但無法獨立對私有 Ground Truth 重新評分。
 
-論文第四章與第六章附錄的放置建議見 [`docs/paper-publication-guide.md`](docs/paper-publication-guide.md)。GitHub repository、release 與最終 commit 連結將於 repository 建立後補入論文附錄。
+論文引用應指向固定 GitHub release 與對應 commit，不使用會移動的分支網址。公開資料內容、引用方式與限制見 [`research_artifacts/README.md`](research_artifacts/README.md)；repository 建立並發布固定版本後，再將 release URL、commit SHA 與 manifest SHA-256 填入論文附錄。
