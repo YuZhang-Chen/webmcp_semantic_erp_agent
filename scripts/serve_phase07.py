@@ -22,7 +22,7 @@ from scripts.serve_phase06 import CATALOG_NAMES, Handler, ROOT, build_state, rea
 def load_manifest(path: Path) -> dict:
     manifest = json.loads(path.read_text(encoding="utf-8"))
     required = {"schema_version", "run_id", "task_id", "condition", "repetition", "transport", "agent", "ground_truth_sha256", "scoring_policy_sha256"}
-    if manifest.get("schema_version") != "1.0" or not required <= set(manifest):
+    if manifest.get("schema_version") not in {"1.0", "phase08-1.0"} or not required <= set(manifest):
         raise RuntimeError("invalid Phase 07 run manifest")
     if manifest["condition"] not in CATALOG_NAMES or manifest["transport"] not in {"direct-browser", "local-gateway"}:
         raise RuntimeError("invalid condition or transport")
@@ -66,7 +66,7 @@ def build_phase07_state(args: argparse.Namespace) -> dict:
     return state
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="serve_phase07")
     parser.add_argument("--run-manifest", type=Path, required=True)
     parser.add_argument("--host", default="localhost")
@@ -76,7 +76,7 @@ def main() -> int:
     parser.add_argument("--bindings", type=Path, default=ROOT / "build" / "phase-06" / "runtime-bindings.json")
     parser.add_argument("--env", type=Path, default=ROOT / ".env")
     parser.add_argument("--log-dir", type=Path, default=ROOT / "build" / "phase-07" / "runs")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     state = build_phase07_state(args)
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     server.runtime_state = state  # type: ignore[attr-defined]

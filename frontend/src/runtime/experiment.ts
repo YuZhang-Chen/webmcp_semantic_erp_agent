@@ -57,7 +57,13 @@ export class ExperimentLogger {
   constructor(private readonly context: ExperimentContext, private readonly snapshot: () => PageStateSnapshot) {}
 
   start(): Promise<void> {
-    return this.emit({ event_type: "run_started", actor: "system" });
+    return this.emit({ event_type: "run_started", actor: "system" }).catch((error) => {
+      // React/browser reloads can invoke the bootstrap effect twice. The
+      // append-only server has already recorded the single valid start event;
+      // treat its idempotent duplicate response as success so tools register.
+      if (error instanceof Error && error.message === "execution logger failed (HTTP 409)") return;
+      throw error;
+    });
   }
 
   started(toolName: string, operationId: string, publicParameters: unknown): ToolToken {
