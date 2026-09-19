@@ -1,0 +1,20 @@
+{
+  "condition": "B",
+  "error_categories": [],
+  "index": 115,
+  "log_sha256": "53f1cc0084070b430a2c53a6ce98d6670b26734ac6a0e40fdd08d1f7f65fd27c",
+  "manifest_sha256": "56fdb7689aa682dd17a468b15c43f6dfbc4e87f7f8376136519b256af69fdbea",
+  "parameter_accuracy": 1.0,
+  "parameter_correct": 2,
+  "repetition": 2,
+  "replacement": false,
+  "run_id": "F08-T09-B-R2",
+  "scored_parameters": 2,
+  "task_id": "F08-T09",
+  "task_success": 1,
+  "task_successes": 1,
+  "tool_call_limit_exceeded": false,
+  "tool_decisions": 2,
+  "tool_selection_accuracy": 1.0,
+  "tool_selection_correct": 2
+}

@@ -1,0 +1,90 @@
+{
+  "canonicalization": {
+    "A": {
+      "get_related_billing_documents": {
+        "SalesOrder": "sales_order_id",
+        "SubsequentDocumentCategory": "M"
+      },
+      "get_related_deliveries": {
+        "SalesOrder": "sales_order_id",
+        "SubsequentDocumentCategory": "J"
+      },
+      "get_sales_order": {
+        "SalesOrder": "sales_order_id"
+      },
+      "search_sales_orders": {
+        "filter.OverallSDProcessStatus": "criteria.order_status",
+        "filter.SalesOrderDate.ge": "criteria.order_date_from",
+        "filter.SalesOrderDate.le": "criteria.order_date_to",
+        "filter.SoldToParty": "criteria.customer_id",
+        "statusMap": {
+          "A": "not_started",
+          "B": "partially_completed",
+          "C": "completed"
+        }
+      }
+    },
+    "B": {
+      "get_related_billing_documents": "identity",
+      "get_related_deliveries": "identity",
+      "get_sales_order": "identity",
+      "search_sales_orders": "identity"
+    },
+    "C": {
+      "get_related_billing_documents": "identity",
+      "get_related_deliveries": "identity",
+      "get_sales_order": "identity",
+      "search_sales_orders": "identity"
+    }
+  },
+  "conditions": {
+    "A": {
+      "artifactSha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "toolNames": {
+        "get_related_billing_documents": "query_A_SalesOrderItmSubsqntProcFlow_M",
+        "get_related_deliveries": "query_A_SalesOrderItmSubsqntProcFlow_J",
+        "get_sales_order": "read_A_SalesOrder",
+        "search_sales_orders": "query_A_SalesOrder"
+      }
+    },
+    "B": {
+      "artifactSha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "toolNames": {
+        "get_related_billing_documents": "get_related_billing_documents",
+        "get_related_deliveries": "get_related_deliveries",
+        "get_sales_order": "get_sales_order",
+        "search_sales_orders": "search_sales_orders"
+      }
+    },
+    "C": {
+      "artifactSha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "toolNames": {
+        "get_related_billing_documents": "get_related_billing_documents",
+        "get_related_deliveries": "get_related_deliveries",
+        "get_sales_order": "get_sales_order",
+        "search_sales_orders": "search_sales_orders"
+      }
+    }
+  },
+  "invariants": {
+    "operationIds": [
+      "get_related_billing_documents",
+      "get_related_deliveries",
+      "get_sales_order",
+      "search_sales_orders"
+    ],
+    "sharedCanonicalExecution": true,
+    "sharedOutputSchemas": true,
+    "sharedReadOnlyAnnotations": true
+  },
+  "model": {
+    "id": "sap-sd-webmcp",
+    "modelSourceId": "webmcp.sap_sd.semantic_model",
+    "sha256": "06a1103be8a2559db89ea2cf8713367516723686c73a849a2b139459163faec2",
+    "sourceId": "webmcp.sap_sd.odata",
+    "version": "0.5.0"
+  },
+  "schemaVersion": "1.0",
+  "suiteSha256": "dd1f36273e5d966a56b9fe33a58214b85bc4157ca1f2f89c1bca0f65338bf871",
+  "suiteVersion": "0.1.0"
+}

@@ -1,0 +1,30 @@
+{
+  "attempted_tool_calls": 2,
+  "budget_exhausted": 1,
+  "condition": "A",
+  "error_categories": [
+    "answer_synthesis_error",
+    "tool_budget_exhausted",
+    "tool_selection_error"
+  ],
+  "excess_call_count": 1,
+  "excess_call_rate": 0.5,
+  "executed_tool_calls": 1,
+  "first_choice_accuracy": 1,
+  "log_sha256": "e7c03bff4db8249f970e1f5b1be8baa03ffb88f2e78bb763827734083578ef3e",
+  "manifest_sha256": "1fb047a5158515e48553226414c85bae3764a4746b3ff979c7f02c321deccf0d",
+  "minimal_tool_set_success": 0,
+  "parameter_accuracy": 1.0,
+  "parameter_correct": 1,
+  "repetition": 1,
+  "run_id": "CB08-T01-A-R1",
+  "scored_parameters": 1,
+  "task_id": "CB08-T01",
+  "task_success": 0,
+  "task_success_under_budget": 0,
+  "task_successes": 0,
+  "tool_call_limit_exceeded": true,
+  "tool_decisions": 2,
+  "tool_selection_accuracy": 0.5,
+  "tool_selection_correct": 1
+}

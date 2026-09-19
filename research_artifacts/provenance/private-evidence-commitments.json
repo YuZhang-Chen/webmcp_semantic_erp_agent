@@ -1,0 +1,30 @@
+{
+  "schema_version": "private-evidence-commitments-1.0",
+  "description": "Family-level commitments to the local private evidence inventory. No private filenames, paths, SAP values, raw-answer hashes, or evidence payloads are included.",
+  "families": [
+    {
+      "family": "phase08_private_artifacts",
+      "file_count": 568,
+      "total_bytes": 917189,
+      "commitment_sha256": "333b4b0342831d427b9b2c981008b6685ed15f2f56b1b94dbff8ef17faa4c206"
+    },
+    {
+      "family": "candidate_private_artifacts",
+      "file_count": 14,
+      "total_bytes": 185328,
+      "commitment_sha256": "66bd3cd8c870b6545f11dc0a000224e87ce5959be9d01e27ef988e09ab581c4a"
+    },
+    {
+      "family": "study1_build_evidence",
+      "file_count": 366,
+      "total_bytes": 714560,
+      "commitment_sha256": "cde67764804e01d8d57dfcb1a40e1fabd2f2fd694224b1b0c35f10cd24e532a5"
+    },
+    {
+      "family": "study2_build_evidence",
+      "file_count": 333,
+      "total_bytes": 545847,
+      "commitment_sha256": "e9e36ae8e7c3e8b2111a5138e677df5f4ca1f2a93fb049a75bc74bd10ccc38f3"
+    }
+  ]
+}

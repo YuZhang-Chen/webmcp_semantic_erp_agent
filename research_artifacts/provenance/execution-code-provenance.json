@@ -1,0 +1,17 @@
+{
+  "schema_version": "execution-code-provenance-1.0",
+  "study_runs_executed_from_dirty_working_tree": true,
+  "runtime_changes_recorded_post_hoc_in_commit": "a5d917229d93043a36c8feb306ddcc97d3814575",
+  "commit_is_a_byte_for_byte_snapshot_of_each_run": false,
+  "changes": [
+    {
+      "path": "frontend/src/runtime/experiment.ts",
+      "summary": "Treat the append-only logger's duplicate run_started HTTP 409 as success during browser reload bootstrap."
+    },
+    {
+      "path": "scripts/serve_phase07.py",
+      "summary": "Accept the Phase 08 manifest schema and an injected argument list used by the constrained-budget workbench."
+    }
+  ],
+  "limitation": "The commit records both changes after the study runs; no per-run source-tree snapshot was retained."
+}

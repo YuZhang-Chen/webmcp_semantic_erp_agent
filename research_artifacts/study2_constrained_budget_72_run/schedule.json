@@ -1,0 +1,3234 @@
+{
+  "schema_version": "public-schedule-projection-1.0",
+  "study": "study2_constrained_budget",
+  "protocol": "phase08-constrained-budget-study",
+  "source_id": "webmcp.sap_sd.odata",
+  "schema_version_source": "phase08-budget-1.0",
+  "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+  "seed": 20260916,
+  "planned_slot_count": 72,
+  "recorded_attempt_count": 72,
+  "conditions": [
+    "A",
+    "B",
+    "C"
+  ],
+  "agent": {
+    "model": "gpt-5.6-sol",
+    "reasoning": "medium",
+    "timeout_seconds": 120,
+    "fresh_session_per_run": true
+  },
+  "difficulty_task_counts": {
+    "D1": 3,
+    "D2": 4,
+    "D3": 5
+  },
+  "slot_attempts": [
+    {
+      "task_id": "CB08-T01",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T01-A-R1"
+      ],
+      "scored_run_id": "CB08-T01-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T01",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T01-A-R2"
+      ],
+      "scored_run_id": "CB08-T01-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T01",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T01-B-R1"
+      ],
+      "scored_run_id": "CB08-T01-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T01",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T01-B-R2"
+      ],
+      "scored_run_id": "CB08-T01-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T01",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T01-C-R1"
+      ],
+      "scored_run_id": "CB08-T01-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T01",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T01-C-R2"
+      ],
+      "scored_run_id": "CB08-T01-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T02",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T02-A-R1"
+      ],
+      "scored_run_id": "CB08-T02-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T02",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T02-A-R2"
+      ],
+      "scored_run_id": "CB08-T02-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T02",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T02-B-R1"
+      ],
+      "scored_run_id": "CB08-T02-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T02",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T02-B-R2"
+      ],
+      "scored_run_id": "CB08-T02-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T02",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T02-C-R1"
+      ],
+      "scored_run_id": "CB08-T02-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T02",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T02-C-R2"
+      ],
+      "scored_run_id": "CB08-T02-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T03",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T03-A-R1"
+      ],
+      "scored_run_id": "CB08-T03-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T03",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T03-A-R2"
+      ],
+      "scored_run_id": "CB08-T03-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T03",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T03-B-R1"
+      ],
+      "scored_run_id": "CB08-T03-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T03",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T03-B-R2"
+      ],
+      "scored_run_id": "CB08-T03-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T03",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T03-C-R1"
+      ],
+      "scored_run_id": "CB08-T03-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T03",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T03-C-R2"
+      ],
+      "scored_run_id": "CB08-T03-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T04",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T04-A-R1"
+      ],
+      "scored_run_id": "CB08-T04-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T04",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T04-A-R2"
+      ],
+      "scored_run_id": "CB08-T04-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T04",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T04-B-R1"
+      ],
+      "scored_run_id": "CB08-T04-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T04",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T04-B-R2"
+      ],
+      "scored_run_id": "CB08-T04-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T04",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T04-C-R1"
+      ],
+      "scored_run_id": "CB08-T04-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T04",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T04-C-R2"
+      ],
+      "scored_run_id": "CB08-T04-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T05",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T05-A-R1"
+      ],
+      "scored_run_id": "CB08-T05-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T05",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T05-A-R2"
+      ],
+      "scored_run_id": "CB08-T05-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T05",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T05-B-R1"
+      ],
+      "scored_run_id": "CB08-T05-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T05",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T05-B-R2"
+      ],
+      "scored_run_id": "CB08-T05-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T05",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T05-C-R1"
+      ],
+      "scored_run_id": "CB08-T05-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T05",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T05-C-R2"
+      ],
+      "scored_run_id": "CB08-T05-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T06",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T06-A-R1"
+      ],
+      "scored_run_id": "CB08-T06-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T06",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T06-A-R2"
+      ],
+      "scored_run_id": "CB08-T06-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T06",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T06-B-R1"
+      ],
+      "scored_run_id": "CB08-T06-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T06",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T06-B-R2"
+      ],
+      "scored_run_id": "CB08-T06-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T06",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T06-C-R1"
+      ],
+      "scored_run_id": "CB08-T06-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T06",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T06-C-R2"
+      ],
+      "scored_run_id": "CB08-T06-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T07",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T07-A-R1"
+      ],
+      "scored_run_id": "CB08-T07-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T07",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T07-A-R2"
+      ],
+      "scored_run_id": "CB08-T07-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T07",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T07-B-R1"
+      ],
+      "scored_run_id": "CB08-T07-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T07",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T07-B-R2"
+      ],
+      "scored_run_id": "CB08-T07-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T07",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T07-C-R1"
+      ],
+      "scored_run_id": "CB08-T07-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T07",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T07-C-R2"
+      ],
+      "scored_run_id": "CB08-T07-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T08",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T08-A-R1"
+      ],
+      "scored_run_id": "CB08-T08-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T08",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T08-A-R2"
+      ],
+      "scored_run_id": "CB08-T08-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T08",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T08-B-R1"
+      ],
+      "scored_run_id": "CB08-T08-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T08",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T08-B-R2"
+      ],
+      "scored_run_id": "CB08-T08-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T08",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T08-C-R1"
+      ],
+      "scored_run_id": "CB08-T08-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T08",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T08-C-R2"
+      ],
+      "scored_run_id": "CB08-T08-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T09",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T09-A-R1"
+      ],
+      "scored_run_id": "CB08-T09-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T09",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T09-A-R2"
+      ],
+      "scored_run_id": "CB08-T09-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T09",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T09-B-R1"
+      ],
+      "scored_run_id": "CB08-T09-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T09",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T09-B-R2"
+      ],
+      "scored_run_id": "CB08-T09-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T09",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T09-C-R1"
+      ],
+      "scored_run_id": "CB08-T09-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T09",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T09-C-R2"
+      ],
+      "scored_run_id": "CB08-T09-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T10",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T10-A-R1"
+      ],
+      "scored_run_id": "CB08-T10-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T10",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T10-A-R2"
+      ],
+      "scored_run_id": "CB08-T10-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T10",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T10-B-R1"
+      ],
+      "scored_run_id": "CB08-T10-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T10",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T10-B-R2"
+      ],
+      "scored_run_id": "CB08-T10-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T10",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T10-C-R1"
+      ],
+      "scored_run_id": "CB08-T10-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T10",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T10-C-R2"
+      ],
+      "scored_run_id": "CB08-T10-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T11",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T11-A-R1"
+      ],
+      "scored_run_id": "CB08-T11-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T11",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T11-A-R2"
+      ],
+      "scored_run_id": "CB08-T11-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T11",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T11-B-R1"
+      ],
+      "scored_run_id": "CB08-T11-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T11",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T11-B-R2"
+      ],
+      "scored_run_id": "CB08-T11-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T11",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T11-C-R1"
+      ],
+      "scored_run_id": "CB08-T11-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T11",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T11-C-R2"
+      ],
+      "scored_run_id": "CB08-T11-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T12",
+      "condition": "A",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T12-A-R1"
+      ],
+      "scored_run_id": "CB08-T12-A-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T12",
+      "condition": "A",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T12-A-R2"
+      ],
+      "scored_run_id": "CB08-T12-A-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T12",
+      "condition": "B",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T12-B-R1"
+      ],
+      "scored_run_id": "CB08-T12-B-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T12",
+      "condition": "B",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T12-B-R2"
+      ],
+      "scored_run_id": "CB08-T12-B-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T12",
+      "condition": "C",
+      "repetition": 1,
+      "attempt_ids": [
+        "CB08-T12-C-R1"
+      ],
+      "scored_run_id": "CB08-T12-C-R1",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    },
+    {
+      "task_id": "CB08-T12",
+      "condition": "C",
+      "repetition": 2,
+      "attempt_ids": [
+        "CB08-T12-C-R2"
+      ],
+      "scored_run_id": "CB08-T12-C-R2",
+      "invalid_attempt_ids": [],
+      "replacement_used": false
+    }
+  ],
+  "attempts": [
+    {
+      "run_id": "CB08-T06-C-R1",
+      "task_id": "CB08-T06",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 1,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "f965ef805a8df152537732e1614f683f756e2c8da5ae992d3e8abe682eccfc13",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T07"
+    },
+    {
+      "run_id": "CB08-T06-A-R1",
+      "task_id": "CB08-T06",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 2,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "29f98a56b75ed49759d6c1b675ac90f34d14725c26816a08436f7393da0101bd",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T07"
+    },
+    {
+      "run_id": "CB08-T06-B-R1",
+      "task_id": "CB08-T06",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 3,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "0c7d9f204470d4911c40a41c59588bf421b02852e6c61b401e1d9ffd3970eb93",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T07"
+    },
+    {
+      "run_id": "CB08-T12-A-R1",
+      "task_id": "CB08-T12",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 4,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "0066ecc1512aa220a083d09a3fba4faf288d9016237119942810fe89f0bd3a4a",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T17"
+    },
+    {
+      "run_id": "CB08-T12-C-R1",
+      "task_id": "CB08-T12",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 5,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "27daf67906b7850a02287d157cba27a736cd6bc23727bcfd2022a5a07075478f",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T17"
+    },
+    {
+      "run_id": "CB08-T12-B-R1",
+      "task_id": "CB08-T12",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 6,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "ef30c2c934de8d20e1f99f4de178f73f713dc0ee8898692382d9fca1d42eb5db",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T17"
+    },
+    {
+      "run_id": "CB08-T10-A-R1",
+      "task_id": "CB08-T10",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 7,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "8ab8186d1f1458bff1a49d62a64fe096cb81296d728f1f713eed6d36f3926178",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T15"
+    },
+    {
+      "run_id": "CB08-T10-B-R1",
+      "task_id": "CB08-T10",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 8,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "555bc603ddc8ca04ff92e6d169346293ec957d93d4433896ddbfb3c0177577eb",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T15"
+    },
+    {
+      "run_id": "CB08-T10-C-R1",
+      "task_id": "CB08-T10",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 9,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "a525bf1d58a020596396baa3a8cf4253461788460cc30da0c161fda64d9c8e94",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T15"
+    },
+    {
+      "run_id": "CB08-T04-B-R1",
+      "task_id": "CB08-T04",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 10,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "354cd5421cf51da23deefc6aeef444413357e8ba520f43b9966fe833def2c6f2",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T05"
+    },
+    {
+      "run_id": "CB08-T04-A-R1",
+      "task_id": "CB08-T04",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 11,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "84269fc04b65c0200073be893a40125a68d40cdbe0b66c59cafd63779168ede7",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T05"
+    },
+    {
+      "run_id": "CB08-T04-C-R1",
+      "task_id": "CB08-T04",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 12,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "61927d0b8b3fc3d0fca2ebccf51885a7c09f7cd9f4bdadc19649358afba43a26",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T05"
+    },
+    {
+      "run_id": "CB08-T08-C-R1",
+      "task_id": "CB08-T08",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 13,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "a275caa43319e5066f4719f6a5c2acd6b92699b05dcd456faa18bd6d85aee3d0",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T13"
+    },
+    {
+      "run_id": "CB08-T08-B-R1",
+      "task_id": "CB08-T08",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 14,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "d135d2caa9ee4650b37f673362558473d03aa4a9d83464d7ed0bed97f7af8920",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T13"
+    },
+    {
+      "run_id": "CB08-T08-A-R1",
+      "task_id": "CB08-T08",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 15,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "bb79bf69efd09f771be46b9b8db5eb5b959ba60d84e43f237515c2ee0a2b2798",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T13"
+    },
+    {
+      "run_id": "CB08-T05-C-R1",
+      "task_id": "CB08-T05",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 16,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "99da9d22eab2c8d160e93d9a38a663bd9823ed86e57c37d9c7f0431018e76296",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T06"
+    },
+    {
+      "run_id": "CB08-T05-B-R1",
+      "task_id": "CB08-T05",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 17,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "01c435f9fdb02a8078cbce9b3794700dbeb5280da5028ae4c5175097dff23f9c",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T06"
+    },
+    {
+      "run_id": "CB08-T05-A-R1",
+      "task_id": "CB08-T05",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 18,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "4bc3f4c5fe360358fc83face2ea932e7423086b06055dc9532f3b218a9e8fe4d",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T06"
+    },
+    {
+      "run_id": "CB08-T09-B-R1",
+      "task_id": "CB08-T09",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 19,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "c398389494e05a7adc056acf66a7056663e6cb80d85713cfa6e16c51cd4aa2cc",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T14"
+    },
+    {
+      "run_id": "CB08-T09-C-R1",
+      "task_id": "CB08-T09",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 20,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "3eb4c45279b8dbd166e97e34ff72ef0138c0b6e9a9a76fa12d6c17bb251ee820",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T14"
+    },
+    {
+      "run_id": "CB08-T09-A-R1",
+      "task_id": "CB08-T09",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 21,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "6fcaa05f187792243971468e5c3546b9f1402cc9ad0a5ea2260e8779f2f9e8a3",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T14"
+    },
+    {
+      "run_id": "CB08-T02-A-R1",
+      "task_id": "CB08-T02",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 22,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "31e0617cb157fc108ae79516a74bc63c1fba3fa4e2160689446f40a09a4cd9ae",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T02"
+    },
+    {
+      "run_id": "CB08-T02-C-R1",
+      "task_id": "CB08-T02",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 23,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "6d6910c3497aa3ef331528aa7bfde0306c0fd13c98ec61f347ee72e7227c36a0",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T02"
+    },
+    {
+      "run_id": "CB08-T02-B-R1",
+      "task_id": "CB08-T02",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 24,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "195803b4a2f6e094c27b526752462a1a54b7af3e5f769c43a517f11a12ac25aa",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T02"
+    },
+    {
+      "run_id": "CB08-T03-C-R1",
+      "task_id": "CB08-T03",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 25,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "baa31f9e75249d6f92eb7a7e337c2682fe37a1217de1c9beab7354c9d89d27b7",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T03"
+    },
+    {
+      "run_id": "CB08-T03-A-R1",
+      "task_id": "CB08-T03",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 26,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "64c6b87ee54baa79b74b67dfeb1c9950389ea3c9ec7ababc900893bb15acd8b4",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T03"
+    },
+    {
+      "run_id": "CB08-T03-B-R1",
+      "task_id": "CB08-T03",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 27,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "8bcabff8f1dec8fa5fc249138a0e2e9d0db0b084865fda1551213143d069c329",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T03"
+    },
+    {
+      "run_id": "CB08-T07-A-R1",
+      "task_id": "CB08-T07",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 28,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "8d63a741a56d9cd605f905beea6219f82a5792d3d79d498d3c32f8a5c38d033b",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T08"
+    },
+    {
+      "run_id": "CB08-T07-B-R1",
+      "task_id": "CB08-T07",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 29,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "df5efc9ca137225c47355026a998f77ad05552f638c8b66876d35ad7232fac78",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T08"
+    },
+    {
+      "run_id": "CB08-T07-C-R1",
+      "task_id": "CB08-T07",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 30,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "82c009f5e54170d2b6dad5e32d479cff3cfaf206f7c129aea7a8c613307f1c23",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T08"
+    },
+    {
+      "run_id": "CB08-T01-B-R1",
+      "task_id": "CB08-T01",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 31,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "2a055da641001f17e7dfb3a67bd98f12c328c9ccdafc65c10626551fec80fef0",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T01"
+    },
+    {
+      "run_id": "CB08-T01-A-R1",
+      "task_id": "CB08-T01",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 32,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "1fb047a5158515e48553226414c85bae3764a4746b3ff979c7f02c321deccf0d",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T01"
+    },
+    {
+      "run_id": "CB08-T01-C-R1",
+      "task_id": "CB08-T01",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 33,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "5576a4bef916fceead595ef66a3762a86bcea485a93980a0985c1f651b7e1d4b",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T01"
+    },
+    {
+      "run_id": "CB08-T11-B-R1",
+      "task_id": "CB08-T11",
+      "condition": "B",
+      "repetition": 1,
+      "schedule_index": 34,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "169ecffa9edea3d0f2d34cff66b3aef88835a847caffa9909d12be1e9549cbbe",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T16"
+    },
+    {
+      "run_id": "CB08-T11-C-R1",
+      "task_id": "CB08-T11",
+      "condition": "C",
+      "repetition": 1,
+      "schedule_index": 35,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "8a5eb878a3499a5da2c9b4415ec63450f425490326b81ab71856c4d796f908b3",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T16"
+    },
+    {
+      "run_id": "CB08-T11-A-R1",
+      "task_id": "CB08-T11",
+      "condition": "A",
+      "repetition": 1,
+      "schedule_index": 36,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "0473b2767cd43c3c1b8eaa0c772301fe0d19a17ebe9b1474f0393c638338ccfe",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T16"
+    },
+    {
+      "run_id": "CB08-T11-A-R2",
+      "task_id": "CB08-T11",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 37,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "67349fc5d927957434f8ee85e43ccd81d4d947a7cf425550dbfd871f869569bd",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T16"
+    },
+    {
+      "run_id": "CB08-T11-C-R2",
+      "task_id": "CB08-T11",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 38,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "f22eeb03cfb6062aa1d30ee668021f85ba2835a33bf40faa80721492ccb38c80",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T16"
+    },
+    {
+      "run_id": "CB08-T11-B-R2",
+      "task_id": "CB08-T11",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 39,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "1800c6eb83ad64ea9c3801333927a1f286181c87db767f2e4ea189c4e7353a4d",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T16"
+    },
+    {
+      "run_id": "CB08-T04-C-R2",
+      "task_id": "CB08-T04",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 40,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "9f5f4d062ad57944fa093950c8228b0d17011e7e9592f9dace41fead9ec638a2",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T05"
+    },
+    {
+      "run_id": "CB08-T04-A-R2",
+      "task_id": "CB08-T04",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 41,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "feaa3367707713555124b0ec526d4fbbaa60dcd53b27fb4a65b1ddaaa99203de",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T05"
+    },
+    {
+      "run_id": "CB08-T04-B-R2",
+      "task_id": "CB08-T04",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 42,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "bb54f65690db0d9df9d3b772c473b15e8b123ef4f26730dfe53ab7e58651e294",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T05"
+    },
+    {
+      "run_id": "CB08-T07-B-R2",
+      "task_id": "CB08-T07",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 43,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "d3d688fb093bbb0d09eb65a0abc51ef9923e8b544941bca23541550175af3706",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T08"
+    },
+    {
+      "run_id": "CB08-T07-A-R2",
+      "task_id": "CB08-T07",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 44,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "91d0b8725e348b8a81c2e8a16f8b42ca887a0749df820c8883f1afe0a66f63df",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T08"
+    },
+    {
+      "run_id": "CB08-T07-C-R2",
+      "task_id": "CB08-T07",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 45,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "aa5026f2252848155e7ba344470355602dbbb1823a045487b40890e2789b2296",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T08"
+    },
+    {
+      "run_id": "CB08-T09-B-R2",
+      "task_id": "CB08-T09",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 46,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "a81e63662212284c71e701e29738eac525921c99e7295d0d066d06e4342af04c",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T14"
+    },
+    {
+      "run_id": "CB08-T09-A-R2",
+      "task_id": "CB08-T09",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 47,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "ec8ba817c5047a035e796b0b2788b48e2fca22d40761ba7c5084b6f0ae31635f",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T14"
+    },
+    {
+      "run_id": "CB08-T09-C-R2",
+      "task_id": "CB08-T09",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 48,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "20005bd2cc50b1867f06a5d66ef97394505a29523f610e6f1a1d09a34842fd61",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T14"
+    },
+    {
+      "run_id": "CB08-T06-C-R2",
+      "task_id": "CB08-T06",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 49,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "7563dae8df2e9495e389f9da5e6b1d34eef27fbeca10f13fdab6d1d69f532cfb",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T07"
+    },
+    {
+      "run_id": "CB08-T06-B-R2",
+      "task_id": "CB08-T06",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 50,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "ee87a871b6ae91e3517418d8723e9724489528c7648a4eb39f13e6f8d62cf20b",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T07"
+    },
+    {
+      "run_id": "CB08-T06-A-R2",
+      "task_id": "CB08-T06",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 51,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "7034f1673a29be479a7fffeac49c9f3771bd88b4aaa79ad5d006b0d4684a6e53",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T07"
+    },
+    {
+      "run_id": "CB08-T12-B-R2",
+      "task_id": "CB08-T12",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 52,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "ed916b2691b5a3f7302acbd97cc32d90a28b6f94c46c7fa30b43c7aa32e534bd",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T17"
+    },
+    {
+      "run_id": "CB08-T12-C-R2",
+      "task_id": "CB08-T12",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 53,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "1203278e31e7da92af0e183f55b06a75a141d0d80944f14c7c8b5ef55efb4c16",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T17"
+    },
+    {
+      "run_id": "CB08-T12-A-R2",
+      "task_id": "CB08-T12",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 54,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "2bfb598808224ed37c2ae96887a7fe6299a7afae54f61a113837d3d7dddab5d4",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T17"
+    },
+    {
+      "run_id": "CB08-T02-B-R2",
+      "task_id": "CB08-T02",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 55,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "5aee26cbfa0682859258a181d20ee86740061c36f87651509914d5665c57b58e",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T02"
+    },
+    {
+      "run_id": "CB08-T02-C-R2",
+      "task_id": "CB08-T02",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 56,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "fcb1b769a8d108acb96076370cd5d270260d5e1b831f95881db01dce8c314bb9",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T02"
+    },
+    {
+      "run_id": "CB08-T02-A-R2",
+      "task_id": "CB08-T02",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 57,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "5f52d58cd0d2e94471b1a8617572ea16671789830aa3c58957d6b7dbf44ada0f",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T02"
+    },
+    {
+      "run_id": "CB08-T10-A-R2",
+      "task_id": "CB08-T10",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 58,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "b8ee1c03037bfe9c0405955d754286e8305c3f68f7c564564203c6dff4f69df0",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T15"
+    },
+    {
+      "run_id": "CB08-T10-B-R2",
+      "task_id": "CB08-T10",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 59,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "8c0f9d8ed9d0352ddd32eb9e394f14e44f8e0c1365d76e4513d48ef8a2fc5d23",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T15"
+    },
+    {
+      "run_id": "CB08-T10-C-R2",
+      "task_id": "CB08-T10",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 60,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "89fa77ea0fbbd4d9933fe0c61f975d4c1257f55aabc635a8455c69123512314d",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T15"
+    },
+    {
+      "run_id": "CB08-T05-A-R2",
+      "task_id": "CB08-T05",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 61,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "6999a9d6626e9f7a354ffabc2fe782a6e0d2ceab722bea059734a7ea758c04fb",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T06"
+    },
+    {
+      "run_id": "CB08-T05-B-R2",
+      "task_id": "CB08-T05",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 62,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "55c39982ea9d97a5822d1e24459c983c3ecece28557fe30ab37de29e7e31d5e2",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T06"
+    },
+    {
+      "run_id": "CB08-T05-C-R2",
+      "task_id": "CB08-T05",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 63,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 2,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "9e14ef50d4a5033a94b16ec01eb2e25070e4e330be4a0e329ec8214033fc5452",
+      "difficulty": "D2",
+      "tool_call_budget": 2,
+      "source_task_id": "F08-T06"
+    },
+    {
+      "run_id": "CB08-T08-C-R2",
+      "task_id": "CB08-T08",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 64,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "bb8b054015743fa4513741a3799f6c00afe579dc6a013594c410849d7068a675",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T13"
+    },
+    {
+      "run_id": "CB08-T08-A-R2",
+      "task_id": "CB08-T08",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 65,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "3fa937295ca72781408201a1a54a95a2097cbf3f93a4f2766a6e46d314c6e60b",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T13"
+    },
+    {
+      "run_id": "CB08-T08-B-R2",
+      "task_id": "CB08-T08",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 66,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 3,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "e2b753b7038a5965401126b1f2bee508d9ce80c5d00cd31f5e24a6972c0c2925",
+      "difficulty": "D3",
+      "tool_call_budget": 3,
+      "source_task_id": "F08-T13"
+    },
+    {
+      "run_id": "CB08-T03-A-R2",
+      "task_id": "CB08-T03",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 67,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "d59d4420cd3370d41113769f256f2a77e30aeda4b710213b8a317af5621ea7f4",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T03"
+    },
+    {
+      "run_id": "CB08-T03-C-R2",
+      "task_id": "CB08-T03",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 68,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "b9f893b60dfc600e47079cc97a90634c49f169df1c76c2d7c23387a4220e0419",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T03"
+    },
+    {
+      "run_id": "CB08-T03-B-R2",
+      "task_id": "CB08-T03",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 69,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "acf9a1f11973907842601f5176dfeacabfcfa95ca8c02237a711c074798392c7",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T03"
+    },
+    {
+      "run_id": "CB08-T01-C-R2",
+      "task_id": "CB08-T01",
+      "condition": "C",
+      "repetition": 2,
+      "schedule_index": 70,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "60a5e57f4c37440a4bad3d2e2196a0902496662c2707a1d09fa7eaa5a34250f0",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "a90c6892fab85177791a4087db4c286112f7e7aa5c535861ac0d9b842bb33c91",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T01"
+    },
+    {
+      "run_id": "CB08-T01-B-R2",
+      "task_id": "CB08-T01",
+      "condition": "B",
+      "repetition": 2,
+      "schedule_index": 71,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "701bf11b014a725d2b487b2f7f323dc707779edaa875ef2a4afb75ccebbde76e",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "cfc162cf4a357db1d7da6e4c8e16bd23f1945ef41aea33d19c9d70624dcab305",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T01"
+    },
+    {
+      "run_id": "CB08-T01-A-R2",
+      "task_id": "CB08-T01",
+      "condition": "A",
+      "repetition": 2,
+      "schedule_index": 72,
+      "mode": "supplementary",
+      "transport": "local-gateway",
+      "attempt_status": "scored",
+      "replacement_policy": {
+        "budget_exhaustion_is_valid_failure": true,
+        "invalid_runs_are_not_scored": true,
+        "max_replacements": 2,
+        "preserve_original": true
+      },
+      "agent": {
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "timeout_seconds": 120,
+        "tool_call_limit": 1,
+        "fresh_session_per_run": true
+      },
+      "catalog_sha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+      "runtime_sha256": "53cc809400f0eff59040596ff86f10ed94e0c931f6306933d6823696de6257ed",
+      "system_prompt_sha256": "219a239e1adf41f3b415090ec7a6b00db3816465ca42e1dbeb23ce54f82065a2",
+      "ground_truth_sha256": "de48bfbd34b400028cbf9f6aa6ef2c76b37c9beed58ee915e00f0a5612112e46",
+      "scoring_policy_sha256": "b49e3c88a12ccf7750569cefba59cf8707fd9854ca9ab5457d869359b4005998",
+      "schedule_sha256": "a019ebc3d264c0496a8fb2039644dc953f168a819412f90bfdec16c127fa70a1",
+      "source_manifest_sha256": "db4038455b6aa6c5d0e5916630dfd6d105d187e1ff2420a5f60ef6fc7e85d4fa",
+      "difficulty": "D1",
+      "tool_call_budget": 1,
+      "source_task_id": "F08-T01"
+    }
+  ],
+  "privacy_projection": {
+    "task_prompt_text_included": false,
+    "task_prompt_hashes_included": false,
+    "ground_truth_values_included": false,
+    "raw_answer_text_included": false
+  },
+  "budget_policy": "One call per required operation: D1=1, D2=2, D3=3.",
+  "task_difficulty": {
+    "CB08-T01": "D1",
+    "CB08-T02": "D1",
+    "CB08-T03": "D1",
+    "CB08-T04": "D2",
+    "CB08-T05": "D2",
+    "CB08-T06": "D2",
+    "CB08-T07": "D2",
+    "CB08-T08": "D3",
+    "CB08-T09": "D3",
+    "CB08-T10": "D3",
+    "CB08-T11": "D3",
+    "CB08-T12": "D3"
+  },
+  "task_budgets": {
+    "CB08-T01": 1,
+    "CB08-T02": 1,
+    "CB08-T03": 1,
+    "CB08-T04": 2,
+    "CB08-T05": 2,
+    "CB08-T06": 2,
+    "CB08-T07": 2,
+    "CB08-T08": 3,
+    "CB08-T09": 3,
+    "CB08-T10": 3,
+    "CB08-T11": 3,
+    "CB08-T12": 3
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "public-study-protocol-1.0",
+  "study": "Study 1",
+  "protocol": "phase08-ab-c-experiment",
+  "source_id": "webmcp.sap_sd.odata",
+  "schedule_seed": 20260915,
+  "conditions": [
+    "A",
+    "B",
+    "C"
+  ],
+  "task_count": 20,
+  "repetitions_per_condition": 3,
+  "planned_runs": 180,
+  "difficulty_quota": {
+    "D1": 4,
+    "D2": 8,
+    "D3": 8
+  },
+  "agent": {
+    "model": "gpt-5.6-sol",
+    "reasoning": "medium",
+    "timeout_seconds": 120,
+    "tool_call_limit": 8,
+    "fresh_session_per_run": true
+  },
+  "review_protocol": "human_only",
+  "timeout_gate_status": "waived",
+  "timeout_gate_note": "The researcher waived controlled timeout-interruption evidence on 2026-09-16; runtime timeout enforcement is not claimed as validated."
+}

@@ -1,0 +1,570 @@
+{
+  "artifactSha256": "57e770da385058dc6ce729b17a64e0b3740979861f66ae8b195f97864610dcb9",
+  "compilerVersion": "0.1.0",
+  "condition": "A",
+  "model": {
+    "id": "sap-sd-webmcp",
+    "modelSourceId": "webmcp.sap_sd.semantic_model",
+    "sha256": "06a1103be8a2559db89ea2cf8713367516723686c73a849a2b139459163faec2",
+    "sourceId": "webmcp.sap_sd.odata",
+    "version": "0.5.0"
+  },
+  "schemaVersion": "1.0",
+  "tools": [
+    {
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "description": "對 EntitySet A_SalesOrderItmSubsqntProcFlow 執行 GET collection_filter 查詢，並固定 SubsequentDocumentCategory=M。",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "SalesOrder": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        },
+        "required": [
+          "SalesOrder"
+        ],
+        "type": "object"
+      },
+      "name": "query_A_SalesOrderItmSubsqntProcFlow_M",
+      "operationId": "get_related_billing_documents",
+      "outputSchema": {
+        "$defs": {
+          "billing_document_summary": {
+            "additionalProperties": false,
+            "properties": {
+              "billing_date": {
+                "description": "Billing Document 的業務文件日期；不是系統建立日期或付款基準日。",
+                "format": "date",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "billing_document_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "billing_status": {
+                "description": "Billing Document accounting-posting processing status；不是應收帳款清帳狀態。",
+                "enum": [
+                  "not_relevant",
+                  "not_processed",
+                  "partially_processed",
+                  "completely_processed",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sales_order_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "billing_document_id",
+              "sales_order_id",
+              "billing_date",
+              "billing_status"
+            ],
+            "type": "object"
+          },
+          "trace": {
+            "additionalProperties": false,
+            "properties": {
+              "model_id": {
+                "const": "sap-sd-webmcp"
+              },
+              "model_version": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "operation_id": {
+                "enum": [
+                  "search_sales_orders",
+                  "get_sales_order",
+                  "get_related_deliveries",
+                  "get_related_billing_documents"
+                ]
+              },
+              "protocol": {
+                "const": "odata-v2"
+              },
+              "request_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "retrieved_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "source_evidence_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "request_id",
+              "operation_id",
+              "model_id",
+              "model_version",
+              "protocol",
+              "retrieved_at",
+              "source_evidence_id"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/$defs/billing_document_summary"
+            },
+            "type": "array"
+          },
+          "trace": {
+            "$ref": "#/$defs/trace"
+          }
+        },
+        "required": [
+          "items",
+          "count",
+          "trace"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "description": "對 EntitySet A_SalesOrderItmSubsqntProcFlow 執行 GET collection_filter 查詢，並固定 SubsequentDocumentCategory=J。",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "SalesOrder": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        },
+        "required": [
+          "SalesOrder"
+        ],
+        "type": "object"
+      },
+      "name": "query_A_SalesOrderItmSubsqntProcFlow_J",
+      "operationId": "get_related_deliveries",
+      "outputSchema": {
+        "$defs": {
+          "delivery_summary": {
+            "additionalProperties": false,
+            "properties": {
+              "delivery_date": {
+                "description": "Outbound Delivery 完成 PGI 時記錄的實際貨物移動日期；不推定法律上的所有權移轉時間。",
+                "format": "date",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "delivery_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "delivery_status": {
+                "description": "Outbound Delivery 表頭層級的整體貨物移動／PGI 處理狀態。",
+                "enum": [
+                  "not_started",
+                  "partially_completed",
+                  "completed",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sales_order_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "delivery_id",
+              "sales_order_id",
+              "delivery_date",
+              "delivery_status"
+            ],
+            "type": "object"
+          },
+          "trace": {
+            "additionalProperties": false,
+            "properties": {
+              "model_id": {
+                "const": "sap-sd-webmcp"
+              },
+              "model_version": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "operation_id": {
+                "enum": [
+                  "search_sales_orders",
+                  "get_sales_order",
+                  "get_related_deliveries",
+                  "get_related_billing_documents"
+                ]
+              },
+              "protocol": {
+                "const": "odata-v2"
+              },
+              "request_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "retrieved_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "source_evidence_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "request_id",
+              "operation_id",
+              "model_id",
+              "model_version",
+              "protocol",
+              "retrieved_at",
+              "source_evidence_id"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/$defs/delivery_summary"
+            },
+            "type": "array"
+          },
+          "trace": {
+            "$ref": "#/$defs/trace"
+          }
+        },
+        "required": [
+          "items",
+          "count",
+          "trace"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "description": "對 EntitySet A_SalesOrder 執行 GET unique_filter 查詢。",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "SalesOrder": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        },
+        "required": [
+          "SalesOrder"
+        ],
+        "type": "object"
+      },
+      "name": "read_A_SalesOrder",
+      "operationId": "get_sales_order",
+      "outputSchema": {
+        "$defs": {
+          "sales_order_summary": {
+            "additionalProperties": false,
+            "properties": {
+              "customer_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "order_date": {
+                "format": "date",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "order_status": {
+                "enum": [
+                  "not_started",
+                  "partially_completed",
+                  "completed",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sales_order_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sales_order_id",
+              "customer_id",
+              "order_date",
+              "order_status"
+            ],
+            "type": "object"
+          },
+          "trace": {
+            "additionalProperties": false,
+            "properties": {
+              "model_id": {
+                "const": "sap-sd-webmcp"
+              },
+              "model_version": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "operation_id": {
+                "enum": [
+                  "search_sales_orders",
+                  "get_sales_order",
+                  "get_related_deliveries",
+                  "get_related_billing_documents"
+                ]
+              },
+              "protocol": {
+                "const": "odata-v2"
+              },
+              "request_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "retrieved_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "source_evidence_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "request_id",
+              "operation_id",
+              "model_id",
+              "model_version",
+              "protocol",
+              "retrieved_at",
+              "source_evidence_id"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "sales_order": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/sales_order_summary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "trace": {
+            "$ref": "#/$defs/trace"
+          }
+        },
+        "required": [
+          "sales_order",
+          "trace"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "description": "對 EntitySet A_SalesOrder 執行 GET collection_filter 查詢。",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "filter": {
+            "additionalProperties": false,
+            "minProperties": 1,
+            "properties": {
+              "OverallSDProcessStatus": {
+                "maxLength": 1,
+                "type": "string"
+              },
+              "SalesOrderDate": {
+                "additionalProperties": false,
+                "properties": {
+                  "ge": {
+                    "type": "string"
+                  },
+                  "le": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "SoldToParty": {
+                "maxLength": 10,
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "required": [
+          "filter"
+        ],
+        "type": "object"
+      },
+      "name": "query_A_SalesOrder",
+      "operationId": "search_sales_orders",
+      "outputSchema": {
+        "$defs": {
+          "sales_order_summary": {
+            "additionalProperties": false,
+            "properties": {
+              "customer_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "order_date": {
+                "format": "date",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "order_status": {
+                "enum": [
+                  "not_started",
+                  "partially_completed",
+                  "completed",
+                  null
+                ],
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sales_order_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "sales_order_id",
+              "customer_id",
+              "order_date",
+              "order_status"
+            ],
+            "type": "object"
+          },
+          "trace": {
+            "additionalProperties": false,
+            "properties": {
+              "model_id": {
+                "const": "sap-sd-webmcp"
+              },
+              "model_version": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "operation_id": {
+                "enum": [
+                  "search_sales_orders",
+                  "get_sales_order",
+                  "get_related_deliveries",
+                  "get_related_billing_documents"
+                ]
+              },
+              "protocol": {
+                "const": "odata-v2"
+              },
+              "request_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "retrieved_at": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "source_evidence_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "request_id",
+              "operation_id",
+              "model_id",
+              "model_version",
+              "protocol",
+              "retrieved_at",
+              "source_evidence_id"
+            ],
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/$defs/sales_order_summary"
+            },
+            "type": "array"
+          },
+          "trace": {
+            "$ref": "#/$defs/trace"
+          }
+        },
+        "required": [
+          "items",
+          "count",
+          "trace"
+        ],
+        "type": "object"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "duplicate_call_policy": "incorrect",
+  "maximum_retries": 0,
+  "allowed_optional_operations": {
+    "D1": [],
+    "D2": [],
+    "D3": []
+  },
+  "metric_notes": {
+    "study": "phase08-constrained-budget-study",
+    "optional_operations": "All difficulty levels use an empty optional-operation set."
+  }
+}
